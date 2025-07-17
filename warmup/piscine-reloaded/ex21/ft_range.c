@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:17:07 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/10 14:38:24 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/17 14:12:21 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	*ft_range(int min, int max)
 		i++;
 	res = malloc(i * sizeof(int));
 	if (min >= max)
-		return (res);
+		return ((void *) 0);
 	i = 0;
 	while (min < max)
 	{

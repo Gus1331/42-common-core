@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:05:37 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/09 15:44:55 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/17 14:04:39 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_recursive_factorial(int nb);
 
 int	ft_recursive_factorial(int nb)
 {
-	if (nb < 0)
+	if (nb < 0 || nb > 12)
 	{
 		return (0);
 	}

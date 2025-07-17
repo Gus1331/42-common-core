@@ -1,14 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 14:45:49 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/17 14:27:09 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/09 16:08:28 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/17 10:11:10 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define ABS(Value) (Value < 0 ? -Value : Value)
+#include <mylib.h>
 
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+
+void	ft_putstr(char *str)
+{
+	while (*str)
+	{
+		ft_putchar(*str++);
+	}
+}
+
+/*
+int	main(void)
+{
+	ft_putstr("Lorem Ipsum Dolor Sit.");
+}
+*/

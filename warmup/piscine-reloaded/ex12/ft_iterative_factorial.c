@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:05:37 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/09 15:44:45 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/17 14:06:13 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_iterative_factorial(int nb)
 {
 	int	res;
 
-	if (nb < 0)
+	if (nb < 0 || nb > 12)
 	{
 		return (0);
 	}
@@ -37,5 +37,7 @@ int	main(void)
 	printf("1! = %d\n", ft_iterative_factorial(1));
 	printf("3! = %d\n", ft_iterative_factorial(3));
 	printf("5! = %d\n", ft_iterative_factorial(5));
+	printf("12! = %d\n", ft_iterative_factorial(12));
+	printf("13! = %d\n", ft_iterative_factorial(13));
 }
 */
