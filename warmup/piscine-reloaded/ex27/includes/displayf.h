@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   displayf.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 17:20:28 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/17 10:10:40 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/18 12:57:01 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/18 15:29:06 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mylib.h>
+#ifndef DISPLAYF_H
 
-void	ft_putchar(char c);
+# define DISPLAYF_H
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+# include <unistd.h>
+# include <fcntl.h>
 
-/*
-int	main()
-{
-	char c;
+int	display_file_name(char *fname);
 
-	c	= '4';
-	ft_putchar(c);	
-}
-*/
+#endif

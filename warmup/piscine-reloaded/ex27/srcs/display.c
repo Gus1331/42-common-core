@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 16:14:32 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/09 16:32:34 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/18 12:54:11 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/18 15:53:10 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include "displayf.h"
 
-int	ft_strlen(char *str);
+int	display_file_name(char *fname);
 
-int	ft_strlen(char *str)
+int	display_file_name(char *fname)
 {
-	int	n;
+	ssize_t	buffread;
+	char	buff[1024];
+	int		fd;
 
-	n = 0;
-	while (*str++)
+	fd = open(fname, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	buffread = read(fd, buff, 1);
+	while (buffread)
 	{
-		n++;
+		write(1, buff, 1);
+		buffread = read(fd, buff, 1);
 	}
-	return (n);
+	close(fd);
+	return (0);
 }
-
-/*
-int	main(void)
-{
-	char *string = "123456789";
-	printf("%s -> %d", string, ft_strlen(string));
-}
-*/
