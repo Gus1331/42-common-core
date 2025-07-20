@@ -4,7 +4,9 @@ INCLUDE = -I libft.h
 NAME = libft.a
 OBJ = $(SRC:.c=.o)
 SRC = \
-	ft_strlen.c
+	ft_strlen.c \
+	ft_isalpha.c \
+	ft_atoi.c 
 
 $(NAME) : $(OBJ)
 	ar rcs $@ $(OBJ)
