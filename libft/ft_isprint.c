@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 16:26:13 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/20 22:28:52 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/20 20:22:58 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/20 22:17:49 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+int	ft_isprint(char c);
 
-# define LIBFT_H
-
-# include <stdio.h>
-
-int		ft_strlen(char *str);
-int		ft_atoi(char *str);
-int		ft_isalpha(char c);
-int		ft_isdigit(char c);
-int		ft_isprint(char c);
-int		ft_isalnum(char c);
-int		ft_strlcpy(char *dst, char *src, size_t size);
-
-#endif
+int	ft_isprint(char c)
+{
+	if (c >= ' ' && c <= '~')
+		return (1);
+	return (0);
+}

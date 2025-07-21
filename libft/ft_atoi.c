@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:56:50 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/20 17:56:22 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/20 23:34:05 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,3 @@ int	is_negative(char **str)
 	}
 	return (res);
 }
-
-/*
-#include <stdio.h>
-int	main(void)
-{
-	printf("%i\n", ft_atoi("    \t -+---+-+324fd243"));
-	printf("%i\n", ft_atoi("  ---+--+1234ab567"));
-}
-*/
