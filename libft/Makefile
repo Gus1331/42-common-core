@@ -20,6 +20,9 @@ SRC = \
 	ft_strnstr.c \
 	ft_memchr.c \
 	ft_memcmp.c \
+	ft_memset.c \
+	ft_memcpy.c \
+	ft_memmove.c \
 	ft_atoi.c 
 
 $(NAME) : $(OBJ)
