@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 06:30:13 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 07:26:11 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/21 08:09:54 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/21 08:54:51 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n);
+char	*ft_strdup(const char *s);
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strdup(const char *s)
 {
-	char	aux;
-	char	*p_aux;
-	char	*p_s;
-	char	*p_d;
-	int		i;
+	char	*res;
+	int		s_s;
 
-	i = 0;
-	p_d = (char *)dest;
-	p_s = (char *)src;
-	p_aux = & aux;
-	while((size_t)i < n && p_s[i])
+	s_s = 0;
+	if (s == ((void *) 0))
 	{
-		*p_aux = p_s[i];
-		p_d[i] = *p_aux;
-		i++;
+		return ((void *) 0);
 	}
-	return (dest);
+	else if (!(*s == '\0'))
+	{
+		s_s = ft_strlen(s);
+	}
+	res = ft_calloc((s_s + 1) , sizeof(char));
+	ft_memcpy(res, s, s_s + 1);
+	return (res);
 }

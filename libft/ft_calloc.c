@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 06:30:13 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 07:26:11 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/21 07:06:06 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/21 08:07:44 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	aux;
-	char	*p_aux;
-	char	*p_s;
-	char	*p_d;
-	int		i;
+	void	*res;
 
-	i = 0;
-	p_d = (char *)dest;
-	p_s = (char *)src;
-	p_aux = & aux;
-	while((size_t)i < n && p_s[i])
-	{
-		*p_aux = p_s[i];
-		p_d[i] = *p_aux;
-		i++;
-	}
-	return (dest);
+	if (nmemb == 0 || size == 0)
+		return ((void *)0);
+	res = malloc(nmemb * size);
+	((char *)res)[0] = '\0';
+	return (res);
 }
