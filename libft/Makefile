@@ -9,6 +9,9 @@ SRC = \
 	ft_isdigit.c \
 	ft_isprint.c \
 	ft_strlcpy.c \
+	ft_isascii.c \
+	ft_strlcat.c \
+	ft_toupper.c \
 	ft_atoi.c 
 
 $(NAME) : $(OBJ)
@@ -26,6 +29,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "$(NAME) limpo\n"
 
 re: fclean all
 
