@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 01:13:26 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 02:34:18 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/21 09:28:38 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
-	
+
 	i = 0;
 	if (s == (void *)0)
 		return ((void *) 0);
@@ -31,8 +31,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (c == '\0')
 	{
-		//return ((char *)&s[i]);
-		return ((void *) 0);
+		return ((char *)&s[i]);
 	}
 	return ((void *) 0);
 }

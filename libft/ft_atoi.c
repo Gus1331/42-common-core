@@ -6,14 +6,14 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:56:50 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 03:04:46 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/21 09:13:43 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	skip_spaces(char **str);
-int		is_num(char c);
-int		is_negative(char **str);
-int		ft_atoi(const char *nptr);
+static void		skip_spaces(char **str);
+static int		is_num(char c);
+static int		is_negative(char **str);
+int				ft_atoi(const char *nptr);
 
 int	ft_atoi(const char *nptr)
 {
@@ -36,7 +36,7 @@ int	ft_atoi(const char *nptr)
 	return (res);
 }
 
-void	skip_spaces(char **str)
+static void	skip_spaces(char **str)
 {
 	while (**str == ' ' || (**str >= '\t' && **str <= '\f'))
 	{
@@ -44,7 +44,7 @@ void	skip_spaces(char **str)
 	}
 }
 
-int	is_num(char c)
+static int	is_num(char c)
 {
 	if (c >= '0' && c <= '9')
 	{
@@ -53,7 +53,7 @@ int	is_num(char c)
 	return (0);
 }
 
-int	is_negative(char **str)
+static int	is_negative(char **str)
 {
 	int	res;
 
