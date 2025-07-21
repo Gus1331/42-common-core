@@ -18,6 +18,8 @@ SRC = \
 	ft_strncmp.c \
 	ft_bzero.c \
 	ft_strnstr.c \
+	ft_memchr.c \
+	ft_memcmp.c \
 	ft_atoi.c 
 
 $(NAME) : $(OBJ)
