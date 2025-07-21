@@ -12,6 +12,8 @@ SRC = \
 	ft_isascii.c \
 	ft_strlcat.c \
 	ft_toupper.c \
+	ft_strchr.c \
+	ft_strrchr.c \
 	ft_atoi.c 
 
 $(NAME) : $(OBJ)
@@ -25,11 +27,11 @@ all : $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
-	@echo "Arquivos .o limpos"
+	@echo "🧹 Arquivos .o limpos"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(NAME) limpo\n"
+	@echo "🧹 $(NAME) limpo\n"
 
 re: fclean all
 
@@ -40,6 +42,6 @@ main: re
 	@$(CC) main.o $(FLAGS) -L. -lft -o main
 	@echo "\nMain gerado com sucesso"
 	@echo "\nnorminette"
-	norminette $(SRC) -R CheckForbiddenSourceHeader
+	@norminette $(SRC) -R CheckForbiddenSourceHeader
 	@rm -rf *.o
 	@echo "\nSem erros de norminette ✅"

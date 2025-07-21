@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 01:03:02 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 01:47:48 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/21 01:13:26 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/21 01:48:40 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(char c);
+#include "libft.h"
 
-int	ft_isascii(char c)
-{	
-	if (c < 0 || c > 127)
-		return (0);
-	return (1);
+char	*ft_strrchr(const char *s, int c);
+
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*last;
+
+	while (ft_strchr(s, c) != (void *) 0)
+	{
+		last = (char *)s;
+		s++;
+	}
+	if (last != (void *) 0)
+		return (last);
+	return ((void *) 0);
 }
