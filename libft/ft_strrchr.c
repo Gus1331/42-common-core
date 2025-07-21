@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 01:13:26 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 01:48:40 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:12:32 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*last;
+	char	ch;
 
-	while (ft_strchr(s, c) != (void *) 0)
+	ch = (char)c;
+	last = 0;
+	while (*s)
 	{
-		last = (char *)s;
+		if (*s == ch)
+			last = (char *)s;
 		s++;
 	}
-	if (last != (void *) 0)
-		return (last);
-	return ((void *) 0);
+	if (ch == '\0')
+		return ((char *)s);
+	return (last);
 }
