@@ -6,21 +6,21 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 20:28:35 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 00:53:57 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/21 02:59:41 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dst, char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
-int	ft_strlcpy(char *dst, char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	int	src_len;
 	int	i;
 
 	i = 0;
-	src_len = ft_strlen(src);
+	src_len = ft_strlen((char *)src);
 	if (size == 0)
 		return (src_len);
 	while (src_len > i && size -1 > (size_t)i)

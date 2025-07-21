@@ -6,28 +6,28 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:56:50 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/20 23:34:05 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/21 03:04:46 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	skip_spaces(char **str);
 int		is_num(char c);
 int		is_negative(char **str);
-int		ft_atoi(char *str);
+int		ft_atoi(const char *nptr);
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *nptr)
 {
 	int	negative;
 	int	res;
 
-	skip_spaces(&str);
-	negative = is_negative(&str);
+	skip_spaces((char **)&nptr);
+	negative = is_negative((char **)&nptr);
 	res = 0;
-	while (is_num(*str))
+	while (is_num((char)*nptr))
 	{
 		res *= 10;
-		res += *str - '0';
-		str++;
+		res += *nptr - '0';
+		nptr++;
 	}
 	if (negative)
 	{
