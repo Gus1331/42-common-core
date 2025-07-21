@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 02:38:44 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 03:43:57 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/21 03:08:58 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/21 03:24:38 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+void	ft_bzero(void *s, size_t n);
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	int	i;
+	int	*p_s;
 
 	i = 0;
-	while ((s1[i] == s2[i] && (size_t)i < n) && (s1[i] || s2[i]))
+	while ((size_t)i < n)
 	{
+		p_s = (int *)s;
+		*p_s = 0;
 		i++;
+		s++;
 	}
-	if ((s1[i] || s2[i]))
-	{
-		if ((size_t)i == n)
-			i--;
-		return (s1[i] - s2[i]);
-	}
-	return (0);
 }

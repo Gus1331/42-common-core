@@ -12,8 +12,12 @@ SRC = \
 	ft_isascii.c \
 	ft_strlcat.c \
 	ft_toupper.c \
+	ft_tolower.c \
 	ft_strchr.c \
 	ft_strrchr.c \
+	ft_strncmp.c \
+	ft_bzero.c \
+	ft_strnstr.c \
 	ft_atoi.c 
 
 $(NAME) : $(OBJ)
