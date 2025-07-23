@@ -26,7 +26,9 @@ SRC = \
 	ft_calloc.c \
 	ft_strdup.c \
 	ft_atoi.c \
-	ft_substr.c
+	ft_substr.c \
+	ft_strjoin.c \
+	ft_strtrim.c
 
 $(NAME) : $(OBJ)
 	@ar rcs $@ $(OBJ)
