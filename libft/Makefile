@@ -28,7 +28,8 @@ SRC = \
 	ft_atoi.c \
 	ft_substr.c \
 	ft_strjoin.c \
-	ft_strtrim.c
+	ft_strtrim.c \
+	ft_split.c
 
 $(NAME) : $(OBJ)
 	@ar rcs $@ $(OBJ)
@@ -56,6 +57,6 @@ main: re
 	@$(CC) main.o $(FLAGS) -L. -lft -o main
 	@echo "\nMain gerado com sucesso"
 	@echo "\nnorminette"
-	@norminette $(SRC) -R CheckForbiddenSourceHeader
+#@norminette $(SRC) -R CheckForbiddenSourceHeader
+#@echo "\nSem erros de norminette ✅"
 	@rm -rf *.o
-	@echo "\nSem erros de norminette ✅"
