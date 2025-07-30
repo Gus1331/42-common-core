@@ -6,31 +6,30 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 15:30:27 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/25 16:00:50 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/30 11:44:36 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_split(char const *s, char c);
-int		word_count(char const *s, char c);
-int		find_next_delimiter(char const *s, int start, char c);
+char		**ft_split(char const *s, char c);
+static int	word_count(char const *s, char c);
+static void	free_res(char **res);
 
-int	find_next_delimiter(char const *s, int start, char c)
+static void	free_res(char **res)
 {
 	int	i;
 
 	i = 0;
-	while (s[start + i])
+	while (res[i])
 	{
-		if (s[start + i] == c)
-			return (start + i);
+		free(res[i]);
 		i++;
 	}
-	return (start);
+	free(res);
 }
 
-int	word_count(char const *s, char c)
+static int	word_count(char const *s, char c)
 {
 	int	w_count;
 	int	start;
@@ -60,38 +59,28 @@ int	word_count(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
-	int		next_delimeter;
 	int		w_count;
 	int		i;
-	//int		j;
+	int		start;
+	int		end;
 
-	if (!s)
-		return ((void *) 0);
-	if (c == '\0')
-		w_count = 1;
-	else
-		w_count = word_count(s, c);
-	printf("\nword count = %d;", w_count);
-	i = 0;
-	res = malloc(w_count * sizeof(char *));
+	w_count = word_count(s, c);
+	res = malloc((w_count + 1) * sizeof(char *));
 	if (!res)
 		return ((void *) 0);
-	while (w_count > 0)
+	i = 0;
+	end = 0;
+	start = 0;
+	while (i < w_count)
 	{
-		next_delimeter = find_next_delimiter(s, i, c);
-		printf("\nnext delimiter = %d;", next_delimeter);
-		printf("\n>>");
-		while (i <= next_delimeter)
-		{
-			printf("o");
-			i++;
-		}
-		printf("<<\n");
-		w_count--;
+		while (s[start] == c)
+			end = ++start;
+		while (s[end] && s[end] != c)
+			end++;
+		res[i] = ft_substr(s, start, end - start);
+		if (!res[i++])
+			free_res(res);
+		start = end;
 	}
-	return ((void *) 0);
+	return (res[i] = ((void *) 0), res);
 }
-
-/*
-"abc-def-ghi-"
-*/
