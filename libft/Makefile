@@ -60,6 +60,6 @@ main: re
 	@$(CC) main.o $(FLAGS) -L. -lft -o main
 	@echo "\nMain gerado com sucesso"
 	@echo "\nnorminette"
-#@norminette $(SRC) -R CheckForbiddenSourceHeader
-#@echo "\nSem erros de norminette ✅"
+	@norminette $(SRC) -R CheckForbiddenSourceHeader
+	@echo "\nSem erros de norminette ✅"
 	@rm -rf *.o
