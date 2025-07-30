@@ -1,36 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/30 11:53:54 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/30 11:53:54 by gustaoli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "libft.h"
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    unsigned int i;
-    char *res;
+	char			*res;
+	unsigned int	i;
 
-    i = 0;
-    res = malloc((ft_strlen(s) + 1) * sizeof(char));
-    if (!res)
-        return ((void *) 0);
-    while (s[i])
-    {
-        ft_strlcat(res, f(i, &s[i]), 2);
-        i++;
-    }
-    return (res);
+	i = 0;
+	if (!s || !f || s[0] == '\0')
+		return ((void *) 0);
+	res = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!res)
+		return ((void *) 0);
+	while (s[i])
+	{
+		res[i] = f(i, s[i]);
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
-
-/*
-Return value The string created from the successive applications
-of ’f’.
-Returns NULL if the allocation fails.
-
-External functs. malloc
-
-Description Applies the function f to each character of the
-string s, passing its index as the first argument
-and the character itself as the second. A new
-string is created (using malloc(3)) to store the
-results from the successive applications of f.
-
-*/
