@@ -6,6 +6,7 @@ OBJ = $(SRC:.c=.o)
 SRC = \
 	ft_strlen.c \
 	ft_isalpha.c \
+	ft_isalnum.c \
 	ft_isdigit.c \
 	ft_isprint.c \
 	ft_strlcpy.c \
