@@ -1,5 +1,5 @@
 CC = cc
-FLAGS = -Wall -Wextra -Werror --save-temps
+FLAGS = -Wall -Wextra -Werror
 INCLUDE = -I libft.h
 NAME = libft.a
 OBJ = $(SRC:.c=.o)
