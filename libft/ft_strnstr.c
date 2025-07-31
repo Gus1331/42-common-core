@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 03:26:16 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/30 14:41:31 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/31 16:31:16 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	if (!*little)
-		return ((char *)big);
-	while ((size_t)i < len && big[i])
+	j = 0;
+	if (*little == '\0')
+		return ((char *) big);
+	while (i < len && big[i])
 	{
 		j = 0;
-		while (big[i + j] == little[j]
-			&& big[i + j] && little[j]
-			&& (size_t)i + j < len)
+		if (big[i] == little[j])
 		{
-			j++;
+			while (i + j < len && big[i + j] == little[j] && little[j] != '\0')
+				j++;
+			if (little[j] == '\0')
+				return ((char *) &big[i]);
 		}
-		if (!little[j] || ((size_t)j == len && len != 0))
-			return ((char *)&big[i]);
 		i++;
 	}
 	return ((void *) 0);

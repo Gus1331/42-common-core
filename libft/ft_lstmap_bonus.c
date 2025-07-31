@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 12:25:11 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/31 16:53:21 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/30 18:01:13 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/30 18:35:11 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*res;
-	size_t	i;
-	size_t	s_len;
+	t_list	*res;
+	t_list	*res_last;
 
-	if (!s)
-		return ((void *) 0);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		return (ft_strdup(""));
-	if (len > s_len - start)
-		len = s_len - start;
-	res = malloc(len + 1);
+	res = ft_lstnew(f(lst->content));
 	if (!res)
-		return ((void *) 0);
-	i = 0;
-	while (i < len)
 	{
-		res[i] = s[start + i];
-		i++;
+		del(res);
+		return ((void *) 0);
 	}
-	res[i] = '\0';
+	res_last = res;
+	while (lst->next)
+	{
+		lst = lst->next;
+		res_last->next = ft_lstnew(f(lst->content));
+		if (!res_last->next)
+		{
+			ft_lstclear(&res, del);
+			return ((void *) 0);
+		}
+		res_last = res_last->next;
+	}
 	return (res);
 }

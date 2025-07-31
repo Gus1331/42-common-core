@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 05:52:06 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 09:53:04 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/31 15:04:27 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*p_d;
 	char	*p_s;
 
+	if (!dest && !src)
+		return ((void *) 0);
 	p_d = (char *)dest;
 	p_s = (char *)src;
 	i = 0;

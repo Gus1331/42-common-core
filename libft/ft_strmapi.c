@@ -19,12 +19,12 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*res;
 	unsigned int	i;
 
-	i = 0;
-	if (!s || !f || s[0] == '\0')
+	if (!s || !f)
 		return ((void *) 0);
 	res = malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (!res)
 		return ((void *) 0);
+	i = 0;
 	while (s[i])
 	{
 		res[i] = f(i, s[i]);

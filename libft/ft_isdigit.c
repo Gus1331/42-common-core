@@ -6,15 +6,13 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 19:49:19 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/20 19:51:42 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:49:19 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(char c);
+int	ft_isdigit(int c);
 
-int	ft_isdigit(char c)
+int	ft_isdigit(int c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	return (c >= '0' && c <= '9');
 }

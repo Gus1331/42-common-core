@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 05:41:53 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 05:49:16 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/30 19:11:38 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@ void	*ft_memset(void *s, int c, size_t n);
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	int	i;
+	unsigned char	*ptr;
+	unsigned char	val;
+	size_t			i;
 
+	ptr = (unsigned char *)s;
+	val = (unsigned char)c;
 	i = 0;
-	while ((size_t)i < n)
+	while (i < n)
 	{
-		*(int *)&s[i] = c;
+		ptr[i] = val;
 		i++;
 	}
 	return (s);

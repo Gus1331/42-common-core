@@ -71,11 +71,11 @@ char	*ft_itoa(int n)
 
 	i = nbr_size(n);
 	j = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	res = allocate_response_itoa(&i, &j, &n);
 	if (!res)
 		return ((void *) 0);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	while (i > 0)
 	{
 		if (i > 1)

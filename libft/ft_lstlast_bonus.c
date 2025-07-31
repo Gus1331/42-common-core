@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 00:42:03 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/30 18:53:48 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/07/30 15:58:54 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/07/30 16:01:32 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c);
+#include "libft.h"
 
-int	ft_toupper(int c)
+t_list	*ft_lstlast(t_list *lst);
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+	if (!lst)
+		return ((void *) 0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

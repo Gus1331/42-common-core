@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:56:50 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/21 09:13:43 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/30 19:18:42 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_atoi(const char *nptr)
 
 static void	skip_spaces(char **str)
 {
-	while (**str == ' ' || (**str >= '\t' && **str <= '\f'))
+	while (**str == ' ' || (**str >= '\t' && **str <= '\r'))
 	{
 		(*str)++;
 	}
