@@ -6,15 +6,15 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 23:37:23 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/31 14:06:24 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/07/31 19:18:56 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, char *src, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
-size_t	ft_strlcat(char *dst, char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	int	dst_len;
 	int	i;
