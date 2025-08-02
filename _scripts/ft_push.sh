@@ -25,6 +25,9 @@
 # Atualize o zsh
 # >source ~/.zshrc
 
+# Dê permissão de execução ao arquivo
+# >chmod 777 ft_push.sh
+
 # Scrip configurado :)
 
 # Remova "> /dev/null 2>&1" de comandos que queira desilenciar

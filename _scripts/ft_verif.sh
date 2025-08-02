@@ -20,7 +20,7 @@
 # >nano ~/.zshrc
 
 # Adicione o alias para chamar o script (defina o cominho de onde instalar) e salve o arquivo
-# >alias ft_push=(caminho do script)/ft_verif.sh
+# >alias ft_verif=(caminho do script)/ft_verif.sh
 
 # Atualize o zsh
 # >source ~/.zshrc
