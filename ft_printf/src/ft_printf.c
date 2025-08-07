@@ -13,6 +13,28 @@
 #include "ft_printf.h"
 
 int			ft_printf(const char *format, ...);
+static int	handle_format(char format, va_list args);
+
+static int	handle_format(char format, va_list args)
+{
+	if (format == 'c')
+		return (print_char(va_arg(args, int)));
+	else if (format == 's')
+		return (print_string(va_arg(args, char *)));
+	else if (format == 'p')
+		return (print_pointer(va_arg(args, long)));
+	else if (format == 'd' || format == 'i')
+		return (print_integer(va_arg(args, int)));
+	else if (format == 'u')
+		return (print_unsig_int(va_arg(args, unsigned int)));
+	else if (format == 'x')
+		return (print_base(va_arg(args, unsigned int), "0123456789abcdef"));
+	else if (format == 'X')
+		return (print_base(va_arg(args, unsigned int), "0123456789ABCDEF"));
+	else if (format == '%')
+		return (print_char('%'));
+	return (0);
+}
 
 int	ft_printf(const char *format, ...)
 {
@@ -26,28 +48,11 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			if (ft_strchr("cspdiuxX\%", *++format) != NULL && *format != '\0')
-			{
-				if (*format == 'c')
-					print_count += print_char(va_arg(args, int));
-				else if (*format == 's')
-					print_count += print_string(va_arg(args, char *));
-				else if (*format == 'p')
-					print_count += print_pointer(va_arg(args, long));
-				else if (*format == 'd' || *format == 'i')
-					print_count += print_integer(va_arg(args, int));
-				else if (*format == 'u')
-					print_count += print_unsig_int(va_arg(args, unsigned int));
-				else if (*format == 'x' || *format == 'X')
-					print_count += print_hex(va_arg(args, unsigned int), *format);
-			}
+				handle_format(*format, args);
 		}
 		else
-		{
-			write(1, &*format, 1);
-			print_count++;
-		}
+			print_count += write(1, &*format, 1);
 		format++;
 	}
 	return (print_count);
 }
-
