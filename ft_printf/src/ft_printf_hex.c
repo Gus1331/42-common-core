@@ -6,40 +6,40 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 19:38:33 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/06 20:58:37 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:38:39 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int			print_hex(const unsigned int nbr, char format);
 int			print_pointer(const long pointer_address);
-static char	*long_to_hex(const unsigned long nbr);
+static char	*long_to_hex(const unsigned int nbr);
 
 int	print_hex(const unsigned int nbr, char format)
 {
 	int		printed;
 	char	*hex;
-	char	*aux;
 
-	hex = long_to_hex((unsigned long)nbr);
+	hex = long_to_hex(nbr);
 	if (format == 'X')
 	{
-		aux = ft_strmapi(hex, (char (*)(unsigned int, char ))ft_toupper);
-		ft_putstr_fd(aux, 1);
-		free(aux);
+		while (*hex)
+		{
+			if (ft_isalpha(*hex))
+				*hex = ft_toupper(*hex);
+			hex++;
+		}
 	}
-	else
-		ft_putstr_fd(hex, 1);
 	printed = ft_strlen(hex);
 	free(hex);
 	return (printed);
 }
 
-static char	*long_to_hex(const unsigned long nbr)
+static char	*long_to_hex(const unsigned int nbr)
 {
 	char			*res;
-	unsigned long	n;
+	unsigned int	n;
 	int				i;
 
 	i = 0;

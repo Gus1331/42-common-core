@@ -6,11 +6,11 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 19:33:26 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/06 19:40:57 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:38:54 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int	print_integer(const int nbr);
 int	print_unsig_int(const unsigned int nbr);

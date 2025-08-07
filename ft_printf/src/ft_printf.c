@@ -10,16 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdarg.h>
+#include "ft_printf.h"
 
 int			ft_printf(const char *format, ...);
-extern int	print_char(const int c);
-extern int	print_string(const char *str);
-extern int	print_pointer(const long pointer_address);
-extern int	print_integer(const int nbr);
-extern int	print_unsig_int(const unsigned int nbr);
-extern int	print_hex(const int nbr, char format);
 
 int	ft_printf(const char *format, ...)
 {
@@ -58,16 +51,3 @@ int	ft_printf(const char *format, ...)
 	return (print_count);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	int *a;
-	int	b;
-
-	b = 1;
-	a = &b;
-	ft_putnbr_fd(ft_printf("\nHello Word!\n%x\n", -42), 1);
-	ft_putstr_fd("\n", 1);
-	ft_putnbr_fd(printf("\nHello Word>\n%x\n", -42), 1);
-	return (0);
-}

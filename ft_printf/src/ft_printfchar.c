@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_string.c                                 :+:      :+:    :+:   */
+/*   ft_printfchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 19:30:40 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/06 19:35:39 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/08/06 18:28:24 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/08/07 12:38:49 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	print_string(const char *str);
+int	print_char(const int c);
 
-
-int	print_string(const char *str)
+int	print_char(const int c)
 {
-	ft_putstr_fd((char *)str, 1);
-	return (ft_strlen(str));
+	if (c == 0)
+		return (0);
+	write(1, &c, 1);
+	return (1);
 }

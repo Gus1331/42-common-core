@@ -1,15 +1,18 @@
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-INCLUDE = -I./libft 
+INCLUDE = -I./libft -I./include
 LDFLAGS = -L./libft -lft
-NAME = ft_printf
-SRC = ft_printf.c ft_printfchar.c ft_printf_string.c ft_printfnumbers.c ft_printf_hex.c
+NAME = libft_printf.a
+SRC = src/ft_printf.c src/ft_printfchar.c src/ft_printf_string.c src/ft_printfnumbers.c src/ft_printf_hex.c
 OBJ = $(SRC:.c=.o)
 
 $(NAME) : $(OBJ)
 	@make -C libft --no-print-directory
 	@echo "lib compilada ✅"
-	@$(CC) $(FLAGS) -o $@ $(OBJ) $(LDFLAGS)
+	@cp libft/libft.a .
+	@mv libft.a $@
+	@ar rcs $@ $(OBJ)
+#@$(CC) $(FLAGS) -o $@ $(OBJ) 
 
 %.o : %.c
 	@$(CC) $(INCLUDE) $(FLAGS) -c $< -o $@
@@ -32,7 +35,10 @@ re: fclean all
 # Para testes manuais
 
 main: re
-	@echo "\nnorminette"
-	@norminette $(SRC) -R CheckForbiddenSourceHeader
-	@echo "\nSem erros de norminette ✅"
+	@$(CC) $(INCLUDE) $(FLAGS) -c main.c -o main.o
+	@$(CC) main.o $(FLAGS) -L. -lft_printf -o main
+	@echo "\nMain gerado com sucesso"
+# 	@echo "\nnorminette"
+# 	@norminette $(SRC) -R CheckForbiddenSourceHeader
+# 	@echo "\nSem erros de norminette ✅"
 	@rm -rf *.o
