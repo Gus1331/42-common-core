@@ -48,11 +48,12 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			if (ft_strchr("cspdiuxX\%", *++format) != NULL && *format != '\0')
-				handle_format(*format, args);
+				print_count += handle_format(*format, args);
 		}
 		else
 			print_count += write(1, &*format, 1);
 		format++;
 	}
+	va_end(args);
 	return (print_count);
 }

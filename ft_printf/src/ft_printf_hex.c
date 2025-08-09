@@ -6,16 +6,16 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 19:38:33 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/07 15:56:48 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/07 16:28:25 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_pointer(const long pointer_address);
-int	print_base(const long nbr, char *base);
+int	print_pointer(const unsigned long pointer_address);
+int	print_base(const unsigned long nbr, char *base);
 
-int	print_base(const long nbr, char *base)
+int	print_base(const unsigned long nbr, char *base)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	print_base(const long nbr, char *base)
 	return (i);
 }
 
-int	print_pointer(const long pointer_address)
+int	print_pointer(const unsigned long pointer_address)
 {
 	if (!pointer_address)
 		return (write(1, "(nil)", 5));

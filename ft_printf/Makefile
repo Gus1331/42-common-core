@@ -2,7 +2,7 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror
 INCLUDE = -I./libft -I./include
 LDFLAGS = -L./libft -lft
-NAME = libft_printf.a
+NAME = libftprintf.a
 SRC = src/ft_printf.c src/ft_printfchar.c src/ft_printf_string.c src/ft_printfnumbers.c src/ft_printf_hex.c
 OBJ = $(SRC:.c=.o)
 
@@ -12,7 +12,6 @@ $(NAME) : $(OBJ)
 	@cp libft/libft.a .
 	@mv libft.a $@
 	@ar rcs $@ $(OBJ)
-#@$(CC) $(FLAGS) -o $@ $(OBJ) 
 
 %.o : %.c
 	@$(CC) $(INCLUDE) $(FLAGS) -c $< -o $@
@@ -38,7 +37,9 @@ main: re
 	@$(CC) $(INCLUDE) $(FLAGS) -c main.c -o main.o
 	@$(CC) main.o $(FLAGS) -L. -lft_printf -o main
 	@echo "\nMain gerado com sucesso"
-# 	@echo "\nnorminette"
-# 	@norminette $(SRC) -R CheckForbiddenSourceHeader
-# 	@echo "\nSem erros de norminette ✅"
+	@echo "\nnorminette"
+	@norminette $(SRC) -R CheckForbiddenSourceHeader
+	@echo "\nSem erros de norminette ✅"
 	@rm -rf *.o
+
+.PHONY: all re fclean clean 
