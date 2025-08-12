@@ -6,66 +6,113 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:26:02 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/09 08:49:58 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:30:16 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h> // teste
 
 void			read_buffer(char **buffer, int fd);
-static char		**merge_buffers(char *buff1, char **buff2);
+char			*gnl_buffstr(char *buff, unsigned int start);
+static char		*merge_buffers(char **buff1, char **buff2);
 static size_t	buff_size(char *buff);
+
+char	*gnl_buffstr(char *buff, unsigned int start)
+{
+	printf("gnl_buffstr\n");
+	char	*res;
+	size_t	i;
+	size_t	buff_len;
+
+	if (!buff)
+		return (NULL);
+	buff_len = buff_size(&buff[start]);
+	if (start >= buff_len)
+		return (malloc(1));
+	res = malloc(buff_len + 1);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < buff_len)
+	{
+		res[i] = buff[start + i];
+		i++;
+	}
+	res[i] = '\0';
+	free(buff);
+	return (res);
+}
 
 static size_t	buff_size(char *buff)
 {
-	char	*end;
+	size_t	len;
 
-	end = buff;
-	while (end)
-		end++;
-	return (buff - end);
+	len = 0;
+	while (buff && buff[len])
+		len++;
+	return (len);
 }
 
-static char	**merge_buffers(char *buff1, char **buff2)
+static char	*merge_buffers(char **buff1, char **buff2)
 {
-	char	*full_buff;
-
-	full_buff = malloc(sizeof (char) * (buff_size(buff1) + buff_size(buff2)));
-	if (!full_buff)
+	// printf("merge_buffers\n");
+	char	*buff;
+	char	*buff_i;
+	int		i;
+	
+	buff = malloc(sizeof(char) * (buff_size(*buff1)+buff_size(*buff2) + 1));
+	// printf("merge alloc size to buffer %d\n", (int)(buff_size(*buff1)+buff_size(*buff2) + 1));
+	if (!buff)
 		return (NULL);
-	while (buff1)
-		*full_buff++ = *buff1++;
-	while (buff2)
-		*full_buff++ = *buff2++;
-	free(buff1);
-	free(buff2);
-	return (full_buff);
+	buff_i = buff;
+	i = 0;
+	while ((*buff1)[i])
+	{
+		*buff_i++ = (*buff1)[i];
+		// printf("%p = %c \n", buff_i, (*buff1)[i]);
+		i++;
+	}
+	i = 0;
+	while ((*buff2)[i])
+	{
+		*buff_i++ = (*buff2)[i];
+		i++;
+	}
+	*buff_i = '\0';
+	free(*buff1);
+	// printf("merge_buffers completed\n");
+	return (buff);
 }
 
 void	read_buffer(char **buffer, int fd)
 {
 	char	*aux_buff;
-	size_t	iread;
+	ssize_t	iread;
 	size_t	i;
 
-	iread = 1;
-	aux_buff = malloc(BUFFER_SIZE * sizeof(char));
+	aux_buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!aux_buff)
 		return ;
-	while (iread)
+	while (1)
 	{
 		iread = read(fd, aux_buff, BUFFER_SIZE);
+		if (iread <= 0)
+			break ;
+		aux_buff[iread] = '\0';
 		i = 0;
-		if (iread)
-			aux_buff[iread] = '\0';
-		while (aux_buff[i] != NULL || aux_buff[i] != '\n')
+		while (aux_buff[i] && aux_buff[i] != '\n')
 			i++;
 		if (aux_buff[i] == '\n')
-			iread = -1;
-		if (aux_buff[0])
-			merge_buffers(buffer, aux_buff);
+		{
+			aux_buff[i + 1] = '\0';
+			*buffer = merge_buffers(buffer, &aux_buff);
+			break ;
+		}
+		*buffer = merge_buffers(buffer, &aux_buff);
 	}
 	free(aux_buff);
+	printf("read_buffer OK\n");
 }
 
 /*
