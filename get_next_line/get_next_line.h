@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:25:54 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/12 15:55:26 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:12:38 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 
 char	*get_next_line(int fd);
 void	read_buffer(char **buffer, int fd);
-char	*gnl_buffstr(char *buff, unsigned int start);
+char	*gnl_buffstr(char **buff, unsigned int start);
 
 #endif

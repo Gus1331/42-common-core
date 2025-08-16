@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:26:02 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/12 18:30:16 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/16 20:17:51 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 #include <stdio.h> // teste
 
 void			read_buffer(char **buffer, int fd);
-char			*gnl_buffstr(char *buff, unsigned int start);
+char			*gnl_buffstr(char **buff, unsigned int start);
 static char		*merge_buffers(char **buff1, char **buff2);
 static size_t	buff_size(char *buff);
 
-char	*gnl_buffstr(char *buff, unsigned int start)
+char	*gnl_buffstr(char **buff, unsigned int start)
 {
-	printf("gnl_buffstr\n");
 	char	*res;
 	size_t	i;
 	size_t	buff_len;
 
-	if (!buff)
-		return (NULL);
-	buff_len = buff_size(&buff[start]);
-	if (start >= buff_len)
-		return (malloc(1));
+	buff_len = buff_size(&(*buff)[start]);
+	if (start > buff_len)
+	{
+		res = malloc(1);
+		return (res[0] = '\0', res);
+	}
 	res = malloc(buff_len + 1);
 	if (!res)
 		return (NULL);
 	i = 0;
 	while (i < buff_len)
 	{
-		res[i] = buff[start + i];
+		res[i] = (*buff)[start + i];
 		i++;
 	}
 	res[i] = '\0';
-	free(buff);
+	free(*buff);
 	return (res);
 }
 
@@ -56,13 +56,11 @@ static size_t	buff_size(char *buff)
 
 static char	*merge_buffers(char **buff1, char **buff2)
 {
-	// printf("merge_buffers\n");
 	char	*buff;
 	char	*buff_i;
 	int		i;
-	
-	buff = malloc(sizeof(char) * (buff_size(*buff1)+buff_size(*buff2) + 1));
-	// printf("merge alloc size to buffer %d\n", (int)(buff_size(*buff1)+buff_size(*buff2) + 1));
+
+	buff = malloc(sizeof(char) * (buff_size(*buff1) + buff_size(*buff2) + 1));
 	if (!buff)
 		return (NULL);
 	buff_i = buff;
@@ -70,7 +68,6 @@ static char	*merge_buffers(char **buff1, char **buff2)
 	while ((*buff1)[i])
 	{
 		*buff_i++ = (*buff1)[i];
-		// printf("%p = %c \n", buff_i, (*buff1)[i]);
 		i++;
 	}
 	i = 0;
@@ -81,7 +78,6 @@ static char	*merge_buffers(char **buff1, char **buff2)
 	}
 	*buff_i = '\0';
 	free(*buff1);
-	// printf("merge_buffers completed\n");
 	return (buff);
 }
 
@@ -101,7 +97,7 @@ void	read_buffer(char **buffer, int fd)
 			break ;
 		aux_buff[iread] = '\0';
 		i = 0;
-		while (aux_buff[i] && aux_buff[i] != '\n')
+		while (aux_buff[i])
 			i++;
 		if (aux_buff[i] == '\n')
 		{
@@ -112,7 +108,6 @@ void	read_buffer(char **buffer, int fd)
 		*buffer = merge_buffers(buffer, &aux_buff);
 	}
 	free(aux_buff);
-	printf("read_buffer OK\n");
 }
 
 /*
