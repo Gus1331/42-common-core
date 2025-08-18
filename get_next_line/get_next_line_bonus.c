@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:25:59 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/18 00:29:39 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/18 09:09:03 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h> // TESTE
+#include "get_next_line_bonus.h"
 
 char		*get_next_line(int fd);
 static char	*next_line(char **buff);
@@ -56,25 +55,25 @@ static char	*next_line(char **buff)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[1024];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!buffer)
+	if (!buffer[fd])
 	{
-		buffer = malloc(1);
-		buffer[0] = '\0';
+		buffer[fd] = malloc(1);
+		(buffer[fd])[0] = '\0';
 	}
-	read_buffer(&buffer, fd);
-	if (!buffer)
+	read_buffer(&buffer[fd], fd);
+	if (!buffer[fd])
 		return (NULL);
-	if (*buffer == '\0')
+	if (*(buffer[fd]) == '\0')
 	{
-		free(buffer);
-		buffer = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
 		return (NULL);
 	}
-	return (next_line(&buffer));
+	return (next_line(&(buffer[fd])));
 }
 
 /*
