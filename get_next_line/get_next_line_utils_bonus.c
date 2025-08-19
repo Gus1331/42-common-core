@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:26:02 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/19 15:18:26 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/19 17:02:27 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	read_buffer(char **buffer, int fd)
 {
 	char	*aux_buff;
 	ssize_t	iread;
-	size_t	i;
 
 	aux_buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!aux_buff)
@@ -107,9 +106,6 @@ void	read_buffer(char **buffer, int fd)
 			return ;
 		}
 		aux_buff[iread] = '\0';
-		i = 0;
-		while (aux_buff[i])
-			i++;
 		*buffer = merge_buffers(buffer, &aux_buff);
 	}
 	free(aux_buff);

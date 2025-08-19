@@ -6,12 +6,11 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:25:59 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/19 15:03:07 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/19 17:00:43 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h> // TESTE
 
 static void	handle_buff(char **buff, char **aux)
 {
@@ -72,29 +71,3 @@ char	*get_next_line(int fd)
 	}
 	return (next_line(&buffer));
 }
-
-/*
-#include <fcntl.h>
-int main(void)
-{
-	int		fd;
-	char	*line;
-
-	fd = open("arquivo.txt", O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Erro ao abrir arquivo");
-		return (1);
-	}
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		printf("RESULT -> {%s}\n", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	line = get_next_line(fd);
-	printf("RESULT -> {%s}\n", line);
-	close(fd);
-	return (0);
-}//*/
