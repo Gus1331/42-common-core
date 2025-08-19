@@ -6,15 +6,11 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:25:59 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/18 09:09:03 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/19 15:14:09 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-char		*get_next_line(int fd);
-static char	*next_line(char **buff);
-static void	handle_buff(char **buff, char **aux);
 
 static void	handle_buff(char **buff, char **aux)
 {
@@ -64,7 +60,7 @@ char	*get_next_line(int fd)
 		buffer[fd] = malloc(1);
 		(buffer[fd])[0] = '\0';
 	}
-	read_buffer(&buffer[fd], fd);
+	read_buffer(&(buffer[fd]), fd);
 	if (!buffer[fd])
 		return (NULL);
 	if (*(buffer[fd]) == '\0')

@@ -6,17 +6,21 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:26:02 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/18 08:33:26 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/19 15:18:26 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-void			read_buffer(char **buffer, int fd);
-char			*gnl_buffstr(char **buff, unsigned int start);
-static char		*merge_buffers(char **buff1, char **buff2);
-static size_t	buff_size(char *buff);
-static int		has_nl(char *buff);
+static size_t	buff_size(char *buff)
+{
+	size_t	len;
+
+	len = 0;
+	while (buff && buff[len])
+		len++;
+	return (len);
+}
 
 static int	has_nl(char *buff)
 {
@@ -53,16 +57,6 @@ char	*gnl_buffstr(char **buff, unsigned int start)
 	res[i] = '\0';
 	free(*buff);
 	return (res);
-}
-
-static size_t	buff_size(char *buff)
-{
-	size_t	len;
-
-	len = 0;
-	while (buff && buff[len])
-		len++;
-	return (len);
 }
 
 static char	*merge_buffers(char **buff1, char **buff2)
@@ -108,7 +102,8 @@ void	read_buffer(char **buffer, int fd)
 		if (iread == -1)
 		{
 			free(aux_buff);
-			buffer = NULL;
+			free(*buffer);
+			*buffer = NULL;
 			return ;
 		}
 		aux_buff[iread] = '\0';

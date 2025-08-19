@@ -6,16 +6,12 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 02:25:59 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/08/18 00:29:39 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/08/19 15:03:07 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h> // TESTE
-
-char		*get_next_line(int fd);
-static char	*next_line(char **buff);
-static void	handle_buff(char **buff, char **aux);
 
 static void	handle_buff(char **buff, char **aux)
 {
@@ -97,6 +93,8 @@ int main(void)
 		free(line);
 		line = get_next_line(fd);
 	}
+	line = get_next_line(fd);
+	printf("RESULT -> {%s}\n", line);
 	close(fd);
 	return (0);
 }//*/
