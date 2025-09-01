@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:26:13 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/07/31 19:40:11 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/01 01:42:08 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,14 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// get_next_line (bonus)
+# ifndef GNL_BUFFER_SIZE
+#  define GNL_BUFFER_SIZE 4096
+# endif
+
+char	*get_next_line(int fd);
+void	read_buffer(char **buffer, int fd);
+char	*gnl_buffstr(char **buff, unsigned int start);
 
 #endif

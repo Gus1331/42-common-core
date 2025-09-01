@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror
 INCLUDE = -I libft.h
 NAME = libft.a
 OBJ = $(SRC:.c=.o)
-OBJBONUS = $(OBJ) $(SCRBONUS:.c=.o)
+ALLOBJ = $(OBJ) $(SRCBONUS:.c=.o) $(SRCADC:.c=.o)
 SRC = \
 	ft_strlen.c \
 	ft_isalpha.c \
@@ -40,7 +40,7 @@ SRC = \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
 
-SCRBONUS= \
+SRCBONUS= \
 	ft_lstnew_bonus.c \
 	ft_lstadd_front_bonus.c \
 	ft_lstsize_bonus.c \
@@ -51,8 +51,12 @@ SCRBONUS= \
 	ft_lstiter_bonus.c \
 	ft_lstmap_bonus.c
 
-$(NAME) : $(OBJ)
-	@ar rcs $@ $(OBJ)
+SRCADC= \
+	get_next_line_utils.c \
+	get_next_line.c
+
+$(NAME) : $(ALLOBJ)
+	@ar rcs $@ $(ALLOBJ)
 
 %.o : %.c
 	@$(CC) $(INCLUDE) $(FLAGS) -c $^ -o $@
@@ -61,8 +65,7 @@ $(NAME) : $(OBJ)
 all : $(NAME)
 
 clean:
-	@rm -rf $(OBJ)
-	@rm -rf $(OBJBONUS)
+	@rm -rf $(ALLOBJ)
 	@echo "🧹 Arquivos .o limpos"
 
 fclean: clean
@@ -70,9 +73,6 @@ fclean: clean
 	@echo "🧹 $(NAME) limpo\n"
 
 re: fclean all
-
-bonus: $(OBJBONUS)
-	@ar rcs $(NAME) $(OBJBONUS)
 
 # Para testes manuais
 
