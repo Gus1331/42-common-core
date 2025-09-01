@@ -53,7 +53,12 @@ SRCBONUS= \
 
 SRCADC= \
 	get_next_line_utils.c \
-	get_next_line.c
+	get_next_line.c \
+	ft_printf_hex.c \
+	ft_printf_string.c \
+	ft_printfchar.c \
+	ft_printfnumbers.c \
+	ft_printf.c
 
 $(NAME) : $(ALLOBJ)
 	@ar rcs $@ $(ALLOBJ)
@@ -80,7 +85,4 @@ main: re
 	@$(CC) $(INCLUDE) $(FLAGS) -c main.c -o main.o
 	@$(CC) main.o $(FLAGS) -L. -lft -o main
 	@echo "\nMain gerado com sucesso"
-	@echo "\nnorminette"
-	@norminette $(SRC) -R CheckForbiddenSourceHeader
-	@echo "\nSem erros de norminette ✅"
 	@rm -rf *.o

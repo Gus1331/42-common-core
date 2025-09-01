@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:26:13 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/01 01:42:08 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/01 01:56:30 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -81,5 +82,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*get_next_line(int fd);
 void	read_buffer(char **buffer, int fd);
 char	*gnl_buffstr(char **buff, unsigned int start);
+
+// ft_printf
+int		print_char(const int c);
+int		print_integer(const int nbr);
+int		print_string(const char *str);
+int		print_unsig_int(const unsigned int nbr);
+int		print_pointer(const unsigned long pointer_address);
+int		print_base(const unsigned long nbr, char *base);
+
+int		ft_printf(const char *format, ...);
 
 #endif
