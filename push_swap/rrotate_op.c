@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 08:55:51 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/01 11:00:20 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:30:09 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ void	rrr(t_list **a, t_list **b)
 	reverse_rotate(a);
 	reverse_rotate(b);
 }
-

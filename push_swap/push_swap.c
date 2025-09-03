@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 02:32:35 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/01 12:09:09 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/03 19:01:24 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	validate_argv(char *argv[])
 	}
 }
 
-static void	print_ab(t_list *a, t_list *b)
+void	print_ab(t_list *a, t_list *b)
 {
 	t_list	*aux;
 
@@ -80,8 +80,9 @@ int	main(int argc, char *argv[])
 		ft_lstadd_frontnewnbr(&a, ft_atoi(argv[i++]));
 	}
 	b = NULL;
-	print_ab(a, b);
-	print_ab(a, b);
+	//print_ab(a, b);
+	sort(&a, &b);
+	//print_ab(a, b);
 	ft_lstclear(&a, free);
 	ft_lstclear(&b, free);
 	return (0);
