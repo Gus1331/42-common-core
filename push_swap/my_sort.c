@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   my_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:31:01 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/03 19:01:02 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/03 19:29:25 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* This excedes the minimum operations for project validation */
 
 int				is_sorted(t_list *stack);
 void			sort(t_list **stack_a, t_list **stack_b);
@@ -40,14 +42,12 @@ void	sort(t_list **stack_a, t_list **stack_b)
 {
 	while (is_sorted(*stack_a) == 0)
 	{
-		//print_ab(*stack_a, *stack_b);
 		while (*stack_a != NULL)
 		{
 			check_and_swap(stack_a, get_minor, STACK_A);
 			pb(stack_a, stack_b);
 			check_and_swap(stack_b, get_greater, STACK_B);
 		}
-		//print_ab(*stack_a, *stack_b);
 		while (*stack_b != NULL)
 		{
 			check_and_swap(stack_b, get_greater, STACK_B);
@@ -133,22 +133,3 @@ static void	check_and_swap(t_list **stack,
 	else
 		op(stack, stack_type, RROTATE);
 }
-
-/*
-while (!is_sorted)
-{
-	while (stack_a)
-	{
-		check_and_swap(stack_a, &get_minor);
-		pb
-		check_and_swap(stack_b, &get_greater);
-	}
-	while (stack_b)
-	{
-		check_and_swap(stack_b, &get_greater);
-		pa
-		check_and_swap(stack_a, &get_minor);
-	}
-}
-
-*/
