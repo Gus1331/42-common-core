@@ -3,7 +3,14 @@ FLAGS = -Wall -Wextra -Werror
 INCLUDE = -I./libft -I.
 LDFLAGS = -L./libft -lft
 NAME = push_swap
-SRC = push_swap.c swap_op.c push_op.c rotate_op.c rrotate_op.c sort.c operation.c
+SRC = push_swap.c \
+	swap_op.c \
+	push_op.c \
+	rotate_op.c \
+	rrotate_op.c \
+	sort.c \
+	sort_utils.c \
+	operation.c
 
 OBJ = $(SRC:.c=.o)
 

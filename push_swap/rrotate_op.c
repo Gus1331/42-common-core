@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 08:55:51 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/03 13:30:09 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/05 23:45:58 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void		rrb(t_list **b);
 void		rrr(t_list **a, t_list **b);
 static void	reverse_rotate(t_list **stack);
 
-
 static void	reverse_rotate(t_list **stack)
 {
 	t_list	*prev;
@@ -25,17 +24,14 @@ static void	reverse_rotate(t_list **stack)
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
-
 	prev = *stack;
 	while (prev->next && prev->next->next)
 		prev = prev->next;
-
 	last = prev->next;
 	prev->next = NULL;
 	last->next = *stack;
 	*stack = last;
 }
-
 
 void	rra(t_list **a)
 {
