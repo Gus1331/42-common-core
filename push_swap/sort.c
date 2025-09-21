@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 06:05:59 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/08 06:05:11 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/21 18:14:53 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	pb(stack_a, stack_b);
 	while (ft_lstsize(*stack_a) > 3)
 	{
-		aux = find_cheapest_to_push_b(stack_a, stack_a, *stack_a, *stack_b);
+		aux = find_cheapest_to_push_b(stack_a, stack_a, *stack_a);
 		push_chepeast_to_b(stack_a, stack_b, aux);
+		// push_chepeast_b(stack_a, stack_b);
 	}
 	sort_3(stack_a, STACK_A);
 	while (*stack_b != NULL)
@@ -112,7 +113,3 @@ t_list	*get_greatest(t_list *stack)
 	}
 	return (greatest);
 }
-
-/*
-prompt do inferno ->  ./push_swap 1 6 9 7 3 10 11 2 17 4 0 -2 -5 80 -50 700
-*/

@@ -10,7 +10,9 @@ SRC = push_swap.c \
 	rrotate_op.c \
 	sort.c \
 	sort_utils.c \
-	operation.c
+	operation.c \
+	stack_utils.c \
+	sort_new.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 02:32:35 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/03 19:01:24 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/14 20:27:25 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int argc, char *argv[])
 	a = ft_lstnewnbr(ft_atoi(argv[1]));
 	while (i < argc)
 	{
-		ft_lstadd_frontnewnbr(&a, ft_atoi(argv[i++]));
+		ft_lstadd_back(&a, ft_lstnewnbr(ft_atoi(argv[i++])));
 	}
 	b = NULL;
 	//print_ab(a, b);
