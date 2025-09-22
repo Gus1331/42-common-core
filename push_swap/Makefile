@@ -1,18 +1,11 @@
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-INCLUDE = -I./libft -I.
+INCLUDE = -I./libft -I include
 LDFLAGS = -L./libft -lft
 NAME = push_swap
-SRC = push_swap.c \
-	swap_op.c \
-	push_op.c \
-	rotate_op.c \
-	rrotate_op.c \
-	sort.c \
-	sort_utils.c \
-	operation.c \
-	stack_utils.c \
-	sort_new.c
+SRC = src/push_swap.c \
+	src/validate_args.c \
+	src/manage_stack.c
 
 OBJ = $(SRC:.c=.o)
 
