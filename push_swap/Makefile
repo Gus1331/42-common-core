@@ -5,7 +5,10 @@ LDFLAGS = -L./libft -lft
 NAME = push_swap
 SRC = src/push_swap.c \
 	src/validate_args.c \
-	src/manage_stack.c
+	src/manage_stack.c \
+	src/operation_push.c \
+	src/operation_rotate.c \
+	src/operation_rrotate.c
 
 OBJ = $(SRC:.c=.o)
 

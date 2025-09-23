@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:41:53 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/22 17:46:12 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/22 20:37:08 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,21 @@ typedef struct s_stacks
 	struct s_stack	*stack_b;
 }	t_stacks;
 
+/* ARGUMENT MANAGEMENT */
 t_stacks	*validate_argv(int argc, char *argv[]);
+
+/* STACKS MANAGEMENT */
 t_stacks	*initialize_stacks(void);
 void		push(t_stack *stack, int content);
 int			pop(t_stack *stack);
 void		free_stacks(t_stacks *stacks);
+
+/* OPERATIONS */
+void		pa(t_stacks *stacks);
+void		pb(t_stacks *stacks);
+void		ra(t_stacks *stacks);
+void		rb(t_stacks *stacks);
+void		rra(t_stacks *stacks);
+void		rrb(t_stacks *stacks);
 
 #endif

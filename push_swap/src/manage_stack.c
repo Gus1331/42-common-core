@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 20:14:31 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/22 19:32:33 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/22 21:14:35 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	pop(t_stack *stack)
 	int			content;
 
 	if (stack->top == NULL || stack->stack_size == 0)
-		return (EXIT_FAILURE);
+		return (0);
 	top_node = stack->top;
 	content = top_node->content;
 	if (stack->stack_size == 1)
@@ -84,5 +84,11 @@ int	pop(t_stack *stack)
 
 void	free_stacks(t_stacks *stacks)
 {
+	while (stacks->stack_a->stack_size > 0)
+		pop(stacks->stack_a);
+	while (stacks->stack_b->stack_size > 0)
+		pop(stacks->stack_b);
+	free(stacks->stack_a);
+	free(stacks->stack_b);
 	free(stacks);
 }
