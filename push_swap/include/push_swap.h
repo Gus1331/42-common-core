@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:41:53 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/22 20:37:08 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/26 19:05:26 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,32 @@ int			pop(t_stack *stack);
 void		free_stacks(t_stacks *stacks);
 
 /* OPERATIONS */
+void		sa(t_stacks *stacks);
+void		sb(t_stacks *stacks);
+void		ss(t_stacks *stacks);
 void		pa(t_stacks *stacks);
 void		pb(t_stacks *stacks);
 void		ra(t_stacks *stacks);
 void		rb(t_stacks *stacks);
+void		rr(t_stacks *stacks);
 void		rra(t_stacks *stacks);
 void		rrb(t_stacks *stacks);
+void		rrr(t_stacks *stacks);
+
+/* ALIGN STACK */
+void		rotate_to_top(t_stack *stack, int element_index);
+
+/*GENERIC OPERATIONS*/
+void		rotate_stack(t_stack *stack);
+void		rrotate_stack(t_stack *stack);
+
+/* NAVIGATE STACK HELPERS */
+int			lowest_index(t_stack *stack);
+int			highest_index(t_stack *stack);
+t_content	*get(t_stack *stack, int index);
+
+/* SORT FUNCTIONS */
+int			is_sorted(t_stack *stack);
+void		sort_low(t_stacks *stacks);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:41:49 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/22 22:23:44 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/26 19:06:09 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,17 @@ int	main(int argc, char *argv[])
 	if (stacks == NULL)
 		return (ft_printf("Error"), 1);
 	// ft_printf("Hello World!\n");
-	// print_stacks(stacks);
+	print_stacks(stacks);
 	// pb(stacks);
 	// pb(stacks);
 	// pb(stacks);
 	// print_stacks(stacks);
+	rotate_to_top(stacks->stack_a, 5);
+	// ss(stacks);
+	// sort_low(stacks);
+	// sa(stacks);
 	// ra(stacks);
-	// rrb(stacks);
+	// rr(stacks);
 	print_stacks(stacks);
 	free_stacks(stacks);
 	return (0);

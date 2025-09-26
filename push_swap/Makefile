@@ -8,7 +8,12 @@ SRC = src/push_swap.c \
 	src/manage_stack.c \
 	src/operation_push.c \
 	src/operation_rotate.c \
-	src/operation_rrotate.c
+	src/operation_rrotate.c \
+	src/operation_swap.c \
+	src/sort.c \
+	src/sort_low.c \
+	src/search_stack.c \
+	src/align_stack.c
 
 OBJ = $(SRC:.c=.o)
 
