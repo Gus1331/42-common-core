@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:16:38 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/26 19:06:28 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/28 22:55:56 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,17 @@ void	sort_3(t_stacks *stacks)
 void	sort_4(t_stacks *stacks)
 {
 	t_stack	*stack;
-	int		i;
 
 	stack = stacks->stack_a;
-	if (stack->top->content > stack->top->next->content)
-		sa(stacks);
-	if (stack->top->next->content > stack->top->next->next->content)
+	while (is_sorted(stack) <= 0)
 	{
-		rra(stacks);
-		sa(stacks);
+		if (stack->top->content > stack->top->next->content
+			&& get(stack, highest_index(stack)) != stack->top)
+			sa(stacks);
+		else
+			ra(stacks);
 	}
-	if (stack->top->next->content > stack->top->next->next->content)
-	{
-		rra(stacks);
-		sa(stacks);
-	}
-	i = -1;
-	//while (i < lowest_index(stack))
-} // alinhar com o menor da stack
+}
 
 /*
 ordenar de 2 até 4

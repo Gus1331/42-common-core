@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:18:50 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/24 01:54:41 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/09/28 22:57:27 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int	is_sorted(t_stack *stack)
 		aux = aux->next;
 		i++;
 	}
-	return (ft_printf("already sorted\n"));
+	return (1);
 }
