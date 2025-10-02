@@ -6,12 +6,13 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:41:49 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/28 22:56:15 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/01 22:29:55 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
 void	print_stacks(t_stacks *stacks)
 {
 	t_content	*aux;
@@ -35,7 +36,7 @@ void	print_stacks(t_stacks *stacks)
 		aux = aux->next;
 	}
 	ft_printf("}\n\n");
-}
+} */
 
 int	main(int argc, char *argv[])
 {
@@ -46,18 +47,7 @@ int	main(int argc, char *argv[])
 	stacks = validate_argv(argc, argv);
 	if (stacks == NULL)
 		return (ft_printf("Error"), 1);
-
-	print_stacks(stacks);
-
-	// ra(stacks);
-	// sa(stacks);
-	// rra(stacks);
-	// rra(stacks);
-	// sa(stacks);
-	// print_stacks(stacks);
-	sort_low(stacks);
-
-	print_stacks(stacks);
+	sort(stacks);
 	free_stacks(stacks);
 	return (0);
 }

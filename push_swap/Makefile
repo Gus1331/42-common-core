@@ -13,7 +13,8 @@ SRC = src/push_swap.c \
 	src/sort.c \
 	src/sort_low.c \
 	src/search_stack.c \
-	src/align_stack.c
+	src/align_stack.c \
+	src/cheapest_utils.c
 
 OBJ = $(SRC:.c=.o)
 

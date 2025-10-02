@@ -6,13 +6,14 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:18:50 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/28 22:57:27 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/01 22:55:05 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack);
+int					is_sorted(t_stack *stack);
+void				sort(t_stacks *stacks);
 
 int	is_sorted(t_stack *stack)
 {
@@ -29,4 +30,18 @@ int	is_sorted(t_stack *stack)
 		i++;
 	}
 	return (1);
+}
+
+void	sort(t_stacks *stacks)
+{
+	if (stacks->stack_a->stack_size < 4)
+		return (sort_low(stacks));
+	if (is_sorted(stacks->stack_a))
+		return ;
+	while (stacks->stack_a->stack_size > 3)
+		pb(stacks);
+	sort_low(stacks);
+	while (stacks->stack_b->stack_size > 0)
+		push_cheapest_to_a(stacks);
+	rotate_to_top(stacks->stack_a, lowest_index(stacks->stack_a));
 }

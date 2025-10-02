@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:41:53 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/26 19:05:26 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/01 23:57:54 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ void		rrr(t_stacks *stacks);
 
 /* ALIGN STACK */
 void		rotate_to_top(t_stack *stack, int element_index);
+void		align_match(t_stacks *stacks, t_content *cheapest,
+				t_content *match);
 
-/*GENERIC OPERATIONS*/
+/* GENERIC OPERATIONS */
 void		rotate_stack(t_stack *stack);
 void		rrotate_stack(t_stack *stack);
 
@@ -75,9 +77,19 @@ void		rrotate_stack(t_stack *stack);
 int			lowest_index(t_stack *stack);
 int			highest_index(t_stack *stack);
 t_content	*get(t_stack *stack, int index);
+t_content	*get_cheapest(t_stacks *stacks);
+t_content	*get_cheapest_from_b(t_stacks *stacks);
+t_content	*find_target_in_b(t_stacks *stacks, t_content *a_content);
+t_content	*find_target_in_a(t_stacks *stacks, t_content *b_content);
 
 /* SORT FUNCTIONS */
 int			is_sorted(t_stack *stack);
 void		sort_low(t_stacks *stacks);
+void		sort(t_stacks *stacks);
+void		push_cheapest_to_a(t_stacks *stacks);
+
+/* CALCULATE OPERATIONS*/
+int			operations_to_top(t_stack *stack, t_content *content);
+int			calculate_cost_b_to_a(t_stacks *stacks, t_content *b_content);
 
 #endif
