@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   operation_swap_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/21 19:41:49 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/02 00:52:45 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/10/02 01:38:06 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/10/02 01:55:05 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
-{
-	t_stacks	*stacks;
+void	ss_bonus(t_stacks *stacks);
+void	swap_bonus(t_stack *stack);
 
-	if (argc < 1)
-		return (0);
-	stacks = validate_argv(argc, argv);
-	if (stacks == NULL)
-		return (ft_printf("Error"), 1);
-	sort(stacks);
-	free_stacks(stacks);
-	return (0);
+void	ss_bonus(t_stacks *stacks)
+{
+	swap_bonus(stacks->stack_a);
+	swap_bonus(stacks->stack_b);
+}
+
+void	swap_bonus(t_stack *stack)
+{
+	int	aux;
+
+	if (stack->stack_size < 2)
+		return ;
+	aux = stack->top->content;
+	stack->top->content = stack->top->next->content;
+	stack->top->next->content = aux;
 }

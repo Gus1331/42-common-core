@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:41:53 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/01 23:57:54 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/02 01:59:26 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,15 @@ void		push_cheapest_to_a(t_stacks *stacks);
 /* CALCULATE OPERATIONS*/
 int			operations_to_top(t_stack *stack, t_content *content);
 int			calculate_cost_b_to_a(t_stacks *stacks, t_content *b_content);
+
+/* BONUS OPERATIONS*/
+void		pa_bonus(t_stacks *stacks);
+void		pb_bonus(t_stacks *stacks);
+void		rotate_bonus(t_stack *stack);
+void		rr_bonus(t_stacks *stacks);
+void		rrotate_bonus(t_stack *stack);
+void		rrr_bonus(t_stacks *stacks);
+void		ss_bonus(t_stacks *stacks);
+void		swap_bonus(t_stack *stack);
 
 #endif

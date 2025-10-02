@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   operation_rrotate_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/21 19:41:49 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/02 00:52:45 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/10/02 01:38:19 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/10/02 03:26:43 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
-{
-	t_stacks	*stacks;
+void	rrr_bonus(t_stacks *stacks);
+void	rrotate_bonus(t_stack *stack);
 
-	if (argc < 1)
-		return (0);
-	stacks = validate_argv(argc, argv);
-	if (stacks == NULL)
-		return (ft_printf("Error"), 1);
-	sort(stacks);
-	free_stacks(stacks);
-	return (0);
+void	rrr_bonus(t_stacks *stacks)
+{
+	rrotate_bonus(stacks->stack_a);
+	rrotate_bonus(stacks->stack_b);
+}
+
+void	rrotate_bonus(t_stack *stack)
+{
+	if (stack->stack_size == 0)
+		return ;
+	stack->top = stack->top->prev;
 }

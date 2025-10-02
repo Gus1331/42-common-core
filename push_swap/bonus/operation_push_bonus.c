@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   operation_push_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/21 19:41:49 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/02 00:52:45 by gustaoli         ###   ########.fr       */
+/*   Created: 2025/10/02 01:32:09 by gustaoli          #+#    #+#             */
+/*   Updated: 2025/10/02 01:52:41 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
-{
-	t_stacks	*stacks;
+void	pa_bonus(t_stacks *stacks);
+void	pb_bonus(t_stacks *stacks);
 
-	if (argc < 1)
-		return (0);
-	stacks = validate_argv(argc, argv);
-	if (stacks == NULL)
-		return (ft_printf("Error"), 1);
-	sort(stacks);
-	free_stacks(stacks);
-	return (0);
+void	pa_bonus(t_stacks *stacks)
+{
+	if (stacks->stack_b->stack_size > 0)
+		push(stacks->stack_a, pop(stacks->stack_b));
+}
+
+void	pb_bonus(t_stacks *stacks)
+{
+	if (stacks->stack_a->stack_size > 0)
+		push(stacks->stack_b, pop(stacks->stack_a));
 }
