@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:16:38 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/01 22:01:42 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/02 08:04:23 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,3 @@ void	sort_3(t_stacks *stacks)
 	else
 		ra(stacks);
 }
-
-/*
-ordenar de 2 até 4
-*/
