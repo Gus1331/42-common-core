@@ -58,7 +58,10 @@ SRCADC= \
 	ft_printf_string.c \
 	ft_printfchar.c \
 	ft_printfnumbers.c \
-	ft_printf.c
+	ft_printf.c \
+	ft_max.c \
+	ft_min.c \
+	ft_positive.c
 
 $(NAME) : $(ALLOBJ)
 	@ar rcs $@ $(ALLOBJ)

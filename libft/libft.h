@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:26:13 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/09/01 01:56:30 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/07 05:49:47 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,10 @@ int		print_pointer(const unsigned long pointer_address);
 int		print_base(const unsigned long nbr, char *base);
 
 int		ft_printf(const char *format, ...);
+
+// push_swap
+int		ft_max(int a, int b);
+int		ft_min(int a, int b);
+int		ft_positive(int n);
 
 #endif
