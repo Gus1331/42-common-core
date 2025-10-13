@@ -1,0 +1,51 @@
+CC = cc
+FLAGS = -Wall -Wextra -Werror
+INCLUDE = -I./libft -I include
+LDFLAGS = -L./libft -lft
+
+NAME = pipex
+MAIN = src/pipex.c
+
+SRC = src/bin_paths.c \
+	src/manage_fd.c \
+	src/execute_cmd.c \
+	src/format_args.c
+
+# SRC_BONUS = bonus/operation_push_bonus.c
+
+OBJ = $(SRC:.c=.o) $(MAIN:.c=.o)
+# OBJ_BONUS = $(SRC:.c=.o) $(SRC_BONUS:.c=.o)
+
+$(NAME) : $(OBJ)
+	@make -C libft --no-print-directory
+	@echo "lib compilada ✅"
+	@$(CC) $(OBJ) $(FLAGS) $(LDFLAGS) -o $@
+	@echo "\n$@ gerado com sucesso ✅✅✅"
+
+%.o : %.c
+	@$(CC) $(INCLUDE) $(FLAGS) -c $< -o $@
+	@echo "$@ compilado ✅"
+
+all : $(NAME)
+
+clean:
+	@make -C libft clean --no-print-directory
+	@rm -rf $(OBJ) $(OBJ_BONUS)
+	@echo "🧹 Arquivos .o limpos"
+
+fclean: clean
+	@make -C libft fclean --no-print-directory
+	@rm -f $(NAME)
+	@rm -f checker
+	@echo "🧹 checker limpo"
+	@echo "🧹 $(NAME) limpo\n"
+
+re: fclean all
+
+# bonus : $(OBJ_BONUS)
+# 	@make -C libft --no-print-directory
+# 	@echo "lib compilada ✅"
+# 	@$(CC) $(OBJ_BONUS) $(FLAGS) $(LDFLAGS) -o pipex
+# 	@echo "Pipex gerado com sucesso ✅✅✅"1
+
+.PHONY: all re fclean clean 
