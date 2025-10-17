@@ -6,15 +6,13 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 23:28:48 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/13 08:34:12 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/17 02:51:59 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-#include "pipex.h"
-
-static void	run_mid_commands(char *argv[], char *envv[],
+void		run_mid_commands(char *argv[], char *envv[],
 				int prev_pipe[2], int next_pipe[2]);
 static void	first_command(char *file, char *cmd, char *envv[], int pipefd[2]);
 static void	last_command(char *file, char *cmd, char *envv[], int pipefd[2]);
@@ -29,6 +27,7 @@ int	main(int argc, char *argv[], char *envv[])
 
 	if (argc < 5)
 		return (1);
+	validate_cmds(argc, argv, envv);
 	if (pipe(pipe_next) == -1)
 		exit(EXIT_FAILURE);
 	pid = fork();
@@ -45,12 +44,11 @@ int	main(int argc, char *argv[], char *envv[])
 	if (pid == 0)
 		last_command(argv[argc - 1], argv[argc - 2], envv, pipe_prev);
 	close(pipe_prev[0]);
-	while (wait(NULL) > 0)
-		;
+	wait_child();
 	return (0);
 }
 
-static void	run_mid_commands(char *argv[], char *envv[],
+void	run_mid_commands(char *argv[], char *envv[],
 				int prev_pipe[2], int next_pipe[2])
 {
 	int		i;

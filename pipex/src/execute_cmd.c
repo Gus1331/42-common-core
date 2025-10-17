@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 20:41:37 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/13 03:01:28 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/15 01:21:50 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		execute_command(char *cmd, char *envv[]);
 char		*verify_cmd_in_bin_paths(char *cmd, char **bin_paths);
+void		wait_child(void);
 static char	*construct_path(char *bin_path, char *cmd);
 
 void	execute_command(char *cmd, char *envv[])
@@ -30,7 +31,7 @@ void	execute_command(char *cmd, char *envv[])
 		ft_printf("Command not found: %s\n", cmd);
 		free_paths(paths);
 		free_paths(args);
-		exit(127);
+		exit(EXIT_FAILURE);
 	}
 	execve(full_path, args, envv);
 	perror("execve failed");
@@ -50,6 +51,12 @@ char	*verify_cmd_in_bin_paths(char *cmd, char **bin_paths)
 		free(full_bin_path);
 	}
 	return (NULL);
+}
+
+void	wait_child(void)
+{
+	while (wait(NULL) > 0)
+		;
 }
 
 static char	*construct_path(char *bin_path, char *cmd)

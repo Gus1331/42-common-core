@@ -7,14 +7,11 @@ NAME = pipex
 MAIN = src/pipex.c
 
 SRC = src/bin_paths.c \
-	src/manage_fd.c \
 	src/execute_cmd.c \
-	src/format_args.c
-
-# SRC_BONUS = bonus/operation_push_bonus.c
+	src/format_args.c \
+	src/here_doc_bonus.c
 
 OBJ = $(SRC:.c=.o) $(MAIN:.c=.o)
-# OBJ_BONUS = $(SRC:.c=.o) $(SRC_BONUS:.c=.o)
 
 $(NAME) : $(OBJ)
 	@make -C libft --no-print-directory
@@ -41,11 +38,5 @@ fclean: clean
 	@echo "🧹 $(NAME) limpo\n"
 
 re: fclean all
-
-# bonus : $(OBJ_BONUS)
-# 	@make -C libft --no-print-directory
-# 	@echo "lib compilada ✅"
-# 	@$(CC) $(OBJ_BONUS) $(FLAGS) $(LDFLAGS) -o pipex
-# 	@echo "Pipex gerado com sucesso ✅✅✅"1
 
 .PHONY: all re fclean clean 
