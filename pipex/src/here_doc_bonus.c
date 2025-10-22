@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:32:20 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/17 04:09:05 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/21 21:32:59 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	here_doc(int argc, char *argv[], char *envv[])
 	pid_t	pid;
 
 	if (argc < 6)
-		return (1);
+		exit(EXIT_FAILURE);
 	if (pipe(pipe_next) == -1)
 		exit(EXIT_FAILURE);
 	pid = fork();
@@ -99,5 +99,6 @@ static char	*get_here_doc_content(char *delimiter)
 		free(buff);
 	}
 	free(buff);
+	get_next_line(-1);
 	return (content);
 }
