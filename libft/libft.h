@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:26:13 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/07 05:49:47 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/22 01:22:45 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,10 @@ int		ft_printf(const char *format, ...);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 int		ft_positive(int n);
+
+// pipex
+char	*ft_group_white_spaces(char *str);
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
+char	*ft_replace(char *str, char *target, char *value);
 
 #endif

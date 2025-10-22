@@ -61,7 +61,10 @@ SRCADC= \
 	ft_printf.c \
 	ft_max.c \
 	ft_min.c \
-	ft_positive.c
+	ft_positive.c \
+	ft_group_white_spaces.c \
+	ft_realloc.c \
+	ft_replace.c
 
 $(NAME) : $(ALLOBJ)
 	@ar rcs $@ $(ALLOBJ)
