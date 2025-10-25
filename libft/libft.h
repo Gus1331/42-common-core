@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:26:13 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/22 01:22:45 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/10/25 08:00:39 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,9 @@ int		ft_positive(int n);
 char	*ft_group_white_spaces(char *str);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char	*ft_replace(char *str, char *target, char *value);
+
+// so_long
+void	ft_free_str_arr(char **str_array);
+char	**ft_str_arr_dup(char **str_array);
 
 #endif
