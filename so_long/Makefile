@@ -13,7 +13,10 @@ LIBS = -L $(MLX_DIR)/build -lmlx42 -ldl -lglfw -pthread -lm
 SRC = src/key_hook.c \
 	src/errors.c \
 	src/validate_map.c \
-	src/validate_map_path.c
+	src/validate_map_path.c \
+	src/game.c \
+	src/load_textures.c \
+	src/load_map.c
 
 OBJ = $(SRC:.c=.o) $(MAIN:.c=.o)
 

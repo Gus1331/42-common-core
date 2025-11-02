@@ -6,16 +6,16 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 04:38:25 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/25 09:53:43 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/02 06:13:27 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void				validate_map_elements(char **map);
-void				validate_map_playable(char **map);
-static t_position	get_element_position(char **map, char element);
-static void			fill(char **map, t_position pos);
+void		validate_map_elements(char **map);
+void		validate_map_playable(char **map);
+t_position	get_element_position(char **map, char element);
+static void	fill(char **map, t_position pos);
 
 
 void	validate_map_elements(char **map)
@@ -61,10 +61,10 @@ void	validate_map_playable(char **map)
 	}
 	fill(map_dup, get_element_position(map, 'P'));
 	end = get_element_position(map, 'E');
-	if (map_dup[end.x - 1][end.y] != '@'
-		&& map_dup[end.x + 1][end.y] != '@'
-		&& map_dup[end.x][end.y - 1] != '@'
-		&& map_dup[end.x][end.y + 1] != '@')
+	if (map_dup[end.y][end.x - 1] != '@'
+		&& map_dup[end.y][end.x + 1] != '@'
+		&& map_dup[end.y - 1][end.x] != '@'
+		&& map_dup[end.y + 1][end.x] != '@')
 	{
 		ft_free_str_arr(map_dup);
 		invalid_map("End is not reacheable!", map);
@@ -72,7 +72,7 @@ void	validate_map_playable(char **map)
 	ft_free_str_arr(map_dup);
 }
 
-static t_position	get_element_position(char **map, char element)
+t_position	get_element_position(char **map, char element)
 {
 	int	line;
 	int	column;
@@ -84,7 +84,7 @@ static t_position	get_element_position(char **map, char element)
 		while (map[line][column])
 		{
 			if (map[line][column] == element)
-				return ((t_position){line, column});
+				return ((t_position){column, line});
 			column++;
 		}
 		line++;

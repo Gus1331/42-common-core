@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:26:48 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/25 09:54:38 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/02 06:14:58 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char		**validate_map(char *map_name);
 static char	**get_ber_content(int map);
 static void	validate_edges(char **map);
 //static void	print_map(char **map); // test ======================================
-
 
 char	**validate_map(char *map_name)
 {
@@ -101,7 +100,7 @@ static void	print_map(char **map) // para teste, não subir ====================
 		int j = 0;
 		while (map[i][j] != '\n' && map[i][j]) //
 			ft_printf("%c ", map[i][j++]); //
-		ft_printf("\n"); //
+		ft_printf("\n"); //condition
 		i++; //
 	} //
 	ft_printf("}\n"); //
