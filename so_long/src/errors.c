@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 06:50:27 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/02 06:15:30 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/04 04:13:20 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	game_error(char *msg, t_game game)
 		ft_free_str_arr(game.map);
 	if (game.mlx != NULL)
 		mlx_terminate(game.mlx);
+	if (game.textures.background != NULL)
+		unload_textures(game.textures);
 	exit(EXIT_FAILURE);
 }

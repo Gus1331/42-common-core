@@ -16,7 +16,9 @@ SRC = src/key_hook.c \
 	src/validate_map_path.c \
 	src/game.c \
 	src/load_textures.c \
-	src/load_map.c
+	src/load_map.c \
+	src/load_images.c \
+	src/player.c
 
 OBJ = $(SRC:.c=.o) $(MAIN:.c=.o)
 

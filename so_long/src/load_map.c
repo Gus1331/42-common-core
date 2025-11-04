@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 11:42:16 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/02 04:25:43 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/04 04:42:55 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,17 @@ static mlx_image_t	*select_image(t_game *game, t_position img_pos);
 
 void	load_map(t_game *game, t_position c_pos)
 {
+	reload_images(game);
 	load_background(game);
 	load_elements(game, c_pos);
-	mlx_image_to_window(game->mlx, game->images.player_down, 4 * 128, 3 * 128);
+	if (game->player.head == DOWN)
+		mlx_image_to_window(game->mlx, game->images.player_down, 512, 384);
+	if (game->player.head == UP)
+		mlx_image_to_window(game->mlx, game->images.player_up, 512, 384);
+	if (game->player.head == LEFT)
+		mlx_image_to_window(game->mlx, game->images.player_left, 512, 384);
+	if (game->player.head == RIGHT)
+		mlx_image_to_window(game->mlx, game->images.player_right, 512, 384);
 }
 
 static void	load_background(t_game *game)

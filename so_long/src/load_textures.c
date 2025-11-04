@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 12:05:24 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/10/29 05:36:57 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/04 04:36:16 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void		load_textures(t_game *game);
 void		unload_textures(t_texture textures);
 static int	check_textures(t_texture *textures);
-static int	load_images(t_game *gane);
 
 void	load_textures(t_game *game)
 {
@@ -65,41 +64,4 @@ static int	check_textures(t_texture *textures)
 		|| !textures->player_right)
 		return (0);
 	return (1);
-}
-
-static int	check_images(t_images *images)
-{
-	if (!images->background
-		|| !images->collectibles
-		|| !images->end
-		|| !images->water
-		|| !images->wall
-		|| !images->player_down
-		|| !images->player_up
-		|| !images->player_left
-		|| !images->player_right)
-		return (0);
-	return (1);
-}
-
-static int	load_images(t_game *game)
-{
-	t_images	images;
-	t_texture	t;
-
-	images
-		= (t_images){NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
-	t = game->textures;
-	images.background = mlx_texture_to_image(game->mlx, t.background);
-	images.collectibles = mlx_texture_to_image(game->mlx, t.collectibles);
-	images.end = mlx_texture_to_image(game->mlx, t.end);
-	images.water = mlx_texture_to_image(game->mlx, t.water);
-	images.wall = mlx_texture_to_image(game->mlx, t.wall);
-	images.player_down = mlx_texture_to_image(game->mlx, t.player_down);
-	images.player_up = mlx_texture_to_image(game->mlx, t.player_up);
-	images.player_left = mlx_texture_to_image(game->mlx, t.player_left);
-	images.player_right = mlx_texture_to_image(game->mlx, t.player_right);
-	game->images = images;
-	unload_textures(t);
-	return (check_images(&(game->images)));
 }
