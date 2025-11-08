@@ -6,15 +6,16 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 06:41:25 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/03 23:06:02 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/06 04:43:51 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 t_player			init_player(t_game game);
-void				add_collectible(t_player *player);
 void				move(t_game *game, t_head direction);
+static int			activate_ending(t_game *game);
+static void			move_player(t_game *game, t_position destiny);
 static t_position	calculate_destiny(t_position player_pos, t_head direction);
 
 t_player	init_player(t_game game)
@@ -28,14 +29,9 @@ t_player	init_player(t_game game)
 	return (player);
 }
 
-void	add_collectible(t_player *player)
-{
-	player->collectibles++;
-}
-
 void	move(t_game *game, t_head direction)
 {
-	t_position	destiny;
+	t_position	des;
 
 	if (game->player.head != direction)
 	{
@@ -43,23 +39,46 @@ void	move(t_game *game, t_head direction)
 		load_map(game, game->player.position);
 		return ;
 	}
-	destiny = calculate_destiny(game->player.position, direction);
-	if (destiny.x >= 0 && destiny.x < game->max_x
-		&& destiny.y >= 0 && destiny.y < game->max_y)
+	des = calculate_destiny(game->player.position, direction);
+	if (des.x >= 0 && des.x < game->max_x && des.y >= 0 && des.y < game->max_y)
 	{
-		if (game->map[destiny.y][destiny.x] != '1')
+		if (game->map[des.y][des.x] != '1')
 		{
 			ft_printf("%d\n", ++game->player.moves);
-			if (game->map[destiny.y][destiny.x] == 'C')
-				add_collectible(&game->player);
-			else if (game->map[destiny.y][destiny.x] == 'E')
-				close_game(*game);
-			game->map[game->player.position.y][game->player.position.x] = '0';
-			game->map[destiny.y][destiny.x] = 'P';
-			game->player.position = destiny;
+			if (game->map[des.y][des.x] == 'C')
+				game->player.collectibles++;
+			else if (game->map[des.y][des.x] == 'E')
+			{
+				if (activate_ending(game) == -1)
+					return ;
+			}
+			move_player(game, des);
 		}
 	}
 	load_map(game, game->player.position);
+}
+
+static int	activate_ending(t_game *game)
+{
+	reload_images(game);
+	if (get_element_position(game->map, 'C').x == -1)
+	{
+		game->scene_id = 21;
+		game->scene = true;
+		handle_scenes(game);
+		return (1);
+	}
+	game->scene_id = 11;
+	game->scene = true;
+	handle_scenes(game);
+	return (-1);
+}
+
+static void	move_player(t_game *game, t_position destiny)
+{
+	game->map[game->player.position.y][game->player.position.x] = '0';
+	game->map[destiny.y][destiny.x] = 'P';
+	game->player.position = destiny;
 }
 
 static t_position	calculate_destiny(t_position player_pos, t_head direction)

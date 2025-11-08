@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 07:35:16 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/04 04:42:43 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/07 23:03:43 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_texture
 	mlx_texture_t	*player_right;
 	mlx_texture_t	*end;
 	mlx_texture_t	*collectibles;
+	mlx_texture_t	*item_icon;
 }	t_texture;
 
 typedef struct s_images
@@ -55,6 +56,7 @@ typedef struct s_images
 	mlx_image_t	*player_right;
 	mlx_image_t	*end;
 	mlx_image_t	*collectibles;
+	mlx_image_t	*item_icon;
 }	t_images;
 
 typedef struct s_player
@@ -65,13 +67,14 @@ typedef struct s_player
 	t_head		head;
 }	t_player;
 
-
 typedef struct s_game
 {
 	mlx_t		*mlx;
 	char		**map;
 	int			max_x;
 	int			max_y;
+	bool		scene;
+	int			scene_id;
 	t_player	player;
 	t_texture	textures;
 	t_images	images;
@@ -95,7 +98,8 @@ void		game_error(char *msg, t_game game);
 t_game		game_init(char **map);
 void		close_game(t_game game);
 void		move(t_game *game, t_head direction);
-
+void		scene(t_game game, char *file_path);
+void		handle_scenes(t_game *game);
 
 /* Player */
 t_player	init_player(t_game game);

@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 11:46:17 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/04 04:31:49 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/06 00:22:16 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_game	game_init(char **map)
 	if (!game.mlx)
 		game_error("MLX error", game);
 	load_textures(&game);
-	ft_printf("loading map...\n");
-	load_map(&game, game.player.position);
-	ft_printf("Loop...\n");
+	game.scene = true;
+	game.scene_id = 0;
+	handle_scenes(&game);
 	mlx_key_hook(game.mlx, key_hook, (void *)&game);
 	mlx_loop(game.mlx);
 	return (game);
@@ -48,7 +48,6 @@ static void	update_max_map(t_game *game)
 
 void	close_game(t_game game)
 {
-	ft_printf("Jogo finalizado com %d coletáveis\n", game.player.collectibles);
 	if (game.map != NULL)
 		ft_free_str_arr(game.map);
 	if (game.mlx != NULL)

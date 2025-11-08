@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 04:35:18 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/04 04:42:09 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/04 07:11:20 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ int	load_images(t_game *game)
 	t_texture	t;
 
 	images
-		= (t_images){NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+		= (t_images){NULL, NULL, NULL, NULL,
+		NULL, NULL, NULL, NULL, NULL, NULL};
 	t = game->textures;
 	images.background = mlx_texture_to_image(game->mlx, t.background);
 	images.collectibles = mlx_texture_to_image(game->mlx, t.collectibles);
 	images.end = mlx_texture_to_image(game->mlx, t.end);
 	images.water = mlx_texture_to_image(game->mlx, t.water);
 	images.wall = mlx_texture_to_image(game->mlx, t.wall);
+	images.item_icon = mlx_texture_to_image(game->mlx, t.item_icon);
 	images.player_down = mlx_texture_to_image(game->mlx, t.player_down);
 	images.player_up = mlx_texture_to_image(game->mlx, t.player_up);
 	images.player_left = mlx_texture_to_image(game->mlx, t.player_left);
@@ -44,6 +46,7 @@ void	reload_images(t_game *game)
 	mlx_delete_image(game->mlx, game->images.end);
 	mlx_delete_image(game->mlx, game->images.water);
 	mlx_delete_image(game->mlx, game->images.wall);
+	mlx_delete_image(game->mlx, game->images.item_icon);
 	mlx_delete_image(game->mlx, game->images.player_down);
 	mlx_delete_image(game->mlx, game->images.player_up);
 	mlx_delete_image(game->mlx, game->images.player_left);
@@ -59,6 +62,7 @@ static int	check_images(t_images *images)
 		|| !images->end
 		|| !images->water
 		|| !images->wall
+		|| !images->item_icon
 		|| !images->player_down
 		|| !images->player_up
 		|| !images->player_left

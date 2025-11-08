@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:14:38 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/04 03:01:02 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/06 00:38:38 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	game = (t_game *)param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(game->mlx);
-	if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
+	if (game->scene == true && keydata.key == MLX_KEY_ENTER
+		&& keydata.action == MLX_PRESS)
+		handle_scenes(game);
+	else if (game->scene == true)
+		return ;
+	else if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 		&& keydata.action == MLX_PRESS)
 		move(game, UP);
 	else if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)

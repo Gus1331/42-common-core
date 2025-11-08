@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 11:42:16 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/04 04:42:55 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/06 00:50:09 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ static mlx_image_t	*select_image(t_game *game, t_position img_pos);
 
 void	load_map(t_game *game, t_position c_pos)
 {
+	if (game->scene == true)
+		return ;
 	reload_images(game);
 	load_background(game);
 	load_elements(game, c_pos);
+	if (get_element_position(game->map, 'C').y == -1)
+		mlx_image_to_window(game->mlx, game->images.item_icon, 2, 826);
 	if (game->player.head == DOWN)
 		mlx_image_to_window(game->mlx, game->images.player_down, 512, 384);
 	if (game->player.head == UP)
@@ -64,8 +68,8 @@ static void	load_elements(t_game *game, t_position c_pos)
 		y_it = 0;
 		while (y_it <= 6)
 		{
-			if (x >= 0 && x < game->max_x && y >= 0 && y < game->max_y
-				&& x_it <= game->max_x && y_it <= game->max_y)
+			if (x >= 0 && x < game->max_x && y >= 0
+				&& y < game->max_y && x < game->max_x)
 				put_image(game, (t_position){x_it, y_it},
 					select_image(game, (t_position){x, y}));
 			y_it++;
@@ -81,8 +85,12 @@ static void	put_image(t_game *game, t_position pos, mlx_image_t *img)
 	int	x;
 	int	y;
 
-	if (pos.x < 0 || pos.y < 0 || pos.x > game->max_x || pos.y > game->max_y)
+	if (pos.x < 0 || pos.y < 0
+		|| pos.x > game->max_x + 2 || pos.y > game->max_y + 1)
+	{
+		ft_printf("invalid pos x=%d, y=%d\n", pos.x, pos.y);
 		game_error("Invalid image position", *game);
+	}
 	if (!img)
 		return ;
 	x = pos.x * 128;

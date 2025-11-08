@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 04:38:25 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/02 06:13:27 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/05 23:53:04 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void		validate_map_elements(char **map);
 void		validate_map_playable(char **map);
 t_position	get_element_position(char **map, char element);
 static void	fill(char **map, t_position pos);
-
 
 void	validate_map_elements(char **map)
 {
@@ -61,13 +60,17 @@ void	validate_map_playable(char **map)
 	}
 	fill(map_dup, get_element_position(map, 'P'));
 	end = get_element_position(map, 'E');
-	if (map_dup[end.y][end.x - 1] != '@'
-		&& map_dup[end.y][end.x + 1] != '@'
+	if (map_dup[end.y][end.x - 1] != '@' && map_dup[end.y][end.x + 1] != '@'
 		&& map_dup[end.y - 1][end.x] != '@'
 		&& map_dup[end.y + 1][end.x] != '@')
 	{
 		ft_free_str_arr(map_dup);
 		invalid_map("End is not reacheable!", map);
+	}
+	if (get_element_position(map_dup, 'C').x != -1)
+	{
+		ft_free_str_arr(map_dup);
+		invalid_map("There is a collectible that is not reacheable!", map);
 	}
 	ft_free_str_arr(map_dup);
 }
