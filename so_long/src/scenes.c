@@ -6,7 +6,7 @@
 /*   By: gustaoli <gustaoli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 07:23:43 by gustaoli          #+#    #+#             */
-/*   Updated: 2025/11/06 04:37:47 by gustaoli         ###   ########.fr       */
+/*   Updated: 2025/11/07 23:07:36 by gustaoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	handle_scenes(t_game *game)
 		scene(*game, "media/scene21.png");
 	else if (game->scene_id == 22)
 		scene(*game, "media/scene99.png");
-	else if (game->scene_id == 23 || game->scene_id == 13)
+	else if (game->scene_id == 23)
 		close_game(*game);
 	game->scene_id++;
 }
