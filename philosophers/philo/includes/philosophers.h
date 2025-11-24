@@ -17,29 +17,37 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <pthread.h>
+#include <sys/time.h>
 
 typedef struct s_rules {
-	int		n_philo;
-	int		ms_to_starve;
-	int		ms_to_eat;
-	int		ms_to_sleep;
-	int		max_eat_times;
-	int		active;
+	int				n_philo;
+	int				ms_to_starve;
+	int				ms_to_eat;
+	int				ms_to_sleep;
+	int				max_eat_times;
+	int				active;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	edit_rule;
 }	t_rules;
 
 typedef struct s_philo {
 	int			id;
 	pthread_t	thread;
 	t_rules		rules;
-	int			first_fork;
-	int			second_fork;
+	int			forks[2];
 	int			times_eaten;
+	long		last_meal_mark;
 }	t_philo;
 
 /* Helpers */
 int		ft_atoi(const char *nptr);
+long	get_time(void);
+
 
 /* Data management */
 t_rules	*init_data(int argc, char **args);
+t_philo	*init_philos(t_rules rules);
+void	free_data(t_rules *rules);
+
 
 #endif

@@ -5,7 +5,8 @@ NAME = philo
 
 SRC = philosophers.c \
 	src/ft_atoi.c \
-	src/init_data.c
+	src/init_data.c \
+    src/get_time.c
 
 OBJDIR = objects
 OBJ = $(SRC:%.c=$(OBJDIR)/%.o)
@@ -23,6 +24,7 @@ WHITE = $(ESC)37m
 
 $(NAME) : format $(OBJ)
 	@$(CC) $(FLAGS)  $(OBJ) -o $@
+	@echo "\n"
 
 $(OBJDIR)/%.o: %.c 
 	@mkdir -p $(dir $@)
