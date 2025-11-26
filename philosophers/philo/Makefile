@@ -6,7 +6,9 @@ NAME = philo
 SRC = philosophers.c \
 	src/ft_atoi.c \
 	src/init_data.c \
-    src/get_time.c
+    src/get_time.c \
+    src/routine.c \
+    src/check.c
 
 OBJDIR = objects
 OBJ = $(SRC:%.c=$(OBJDIR)/%.o)

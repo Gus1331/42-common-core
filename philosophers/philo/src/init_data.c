@@ -13,8 +13,8 @@
 #include "philosophers.h"
 
 t_rules			*init_data(int argc, char **args);
-t_philo			*init_philos(t_rules rules);
-static t_philo	new_philo(int id, t_rules rules);
+t_philo			*init_philos(t_rules *rules);
+static t_philo	new_philo(int id, t_rules *rules);
 static int		init_forks(t_rules *rules);
 void			free_data(t_rules *rules);
 
@@ -37,22 +37,23 @@ t_rules	*init_data(int argc, char **args)
 		|| (argc == 6 && data->max_eat_times < 1))
 		return (free(data), NULL);
 	data->active = 1;
-	pthread_mutex_init(data->edit_rule, NULL);
+	pthread_mutex_init(&data->edit_rule, NULL);
+	data->start_timestamp = get_time();
 	if (init_forks(data))
 		return (data);
 	return (free(data), NULL);
 }
 
-t_philo	*init_philos(t_rules rules)
+t_philo	*init_philos(t_rules *rules)
 {
 	t_philo	*philos;
 	int		i;
 
 	i = 0;
-	philos = malloc((rules.n_philo) * sizeof(t_philo));
+	philos = malloc((rules->n_philo) * sizeof(t_philo));
 	if (!philos)
 		return (NULL);
-	while (i < rules.n_philo)
+	while (i < rules->n_philo)
 	{
 		philos[i] = new_philo(i, rules);
 		i++;
@@ -60,7 +61,7 @@ t_philo	*init_philos(t_rules rules)
 	return (philos);
 }
 
-static t_philo	new_philo(int id, t_rules rules)
+static t_philo	new_philo(int id, t_rules *rules)
 {
 	t_philo	philo;
 
@@ -68,11 +69,11 @@ static t_philo	new_philo(int id, t_rules rules)
 	philo.times_eaten = 0;
 	philo.rules = rules;
 	philo.forks[0] = id;
-	if (rules.n_philo == 1)
+	if (rules->n_philo == 1)
 		philo.forks[1] = -1;
-	else if (id + 1 < rules.n_philo && id % 2 == 0)
+	else if (id + 1 < rules->n_philo && id % 2 == 0)
 		philo.forks[1] = id + 1;
-	else if (id + 1 < rules.n_philo&& id % 2 == 1)
+	else if (id + 1 < rules->n_philo&& id % 2 == 1)
 	{
 		philo.forks[0] = id + 1;
 		philo.forks[1] = id;
@@ -84,6 +85,7 @@ static t_philo	new_philo(int id, t_rules rules)
 		philo.forks[0] = 0;
 		philo.forks[1] = id;
 	}
+	philo.last_meal_mark = get_time();
 	return (philo);
 }
 

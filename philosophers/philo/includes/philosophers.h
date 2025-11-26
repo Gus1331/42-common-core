@@ -26,6 +26,7 @@ typedef struct s_rules {
 	int				ms_to_sleep;
 	int				max_eat_times;
 	int				active;
+	long			start_timestamp;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	edit_rule;
 }	t_rules;
@@ -33,7 +34,7 @@ typedef struct s_rules {
 typedef struct s_philo {
 	int			id;
 	pthread_t	thread;
-	t_rules		rules;
+	t_rules		*rules;
 	int			forks[2];
 	int			times_eaten;
 	long		last_meal_mark;
@@ -43,11 +44,16 @@ typedef struct s_philo {
 int		ft_atoi(const char *nptr);
 long	get_time(void);
 
-
 /* Data management */
 t_rules	*init_data(int argc, char **args);
-t_philo	*init_philos(t_rules rules);
+t_philo	*init_philos(t_rules *rules);
 void	free_data(t_rules *rules);
 
+/* Check */
+int 	check_philo_starved(t_philo *philos);
+int 	check_all_philos_eaten(t_philo *philos);
+
+/* Routine */
+void	*routine(void *philo);
 
 #endif
