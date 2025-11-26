@@ -12,65 +12,95 @@
 
 #include "philosophers.h"
 
-void	*routine(void *philo);
-void	ft_eat(t_philo *philo);
-void	ft_sleep(t_philo *philo);
-void	ft_think(t_philo *philo);
-
-
+void		*routine(void *philo);
+static void	ft_eat(t_philo *philo);
+static void	ft_sleep(t_philo *philo);
+static int	ft_grab_forks(t_philo *philo);
+static void	ft_wait_task(int ms, t_rules *rules);
 
 void	*routine(void *philo)
 {
-	while (((t_philo *)philo)->rules->active)
+	t_philo	*philo_cast;
+
+	philo_cast = ((t_philo *)philo);
+	usleep(1000 * (philo_cast->id % 5));
+	while (check_is_active(philo_cast->rules))
 	{
-		if (((t_philo *)philo)->times_eaten == ((t_philo *)philo)->rules->max_eat_times)
-			return (NULL);
+		pthread_mutex_lock(&(philo_cast->edit_philo));
+		if (philo_cast->times_eaten == philo_cast->rules->max_eat_times)
+			return (pthread_mutex_unlock(&(philo_cast->edit_philo)), NULL);
+		pthread_mutex_unlock(&(philo_cast->edit_philo));
 		ft_eat(philo);
 		ft_sleep(philo);
-		ft_think(philo);
+		if (check_is_active(philo_cast->rules))
+			printf("%-6ld %d is thinking\n", get_time()
+				- philo_cast->rules->start_timestamp , philo_cast->id + 1);
 	}
 	return (NULL);
 }
 
-void	ft_eat(t_philo *philo)
+static void	ft_eat(t_philo *philo)
 {
-	if (!philo->rules->active)
-		return ;
-	pthread_mutex_lock(&(philo->rules->forks[philo->forks[0]]));
-	if (!philo->rules->active)
-		return ;
-	printf("%ld %d has taken a fork\n",
-		get_time() - philo->rules->start_timestamp , philo->id + 1);
-	pthread_mutex_lock(&(philo->rules->forks[philo->forks[1]]));
-	if (philo->forks[1] != -1)
+	if (ft_grab_forks(philo) == -1)
 	{
-		if (!philo->rules->active)
-			return ;
-		printf("%ld %d has taken a fork\n",
-			get_time() - philo->rules->start_timestamp , philo->id + 1);
+		usleep(philo->rules->ms_to_starve * 1000);
+		return ;
 	}
+	pthread_mutex_lock(&(philo->edit_philo));
 	philo->last_meal_mark = get_time();
-	printf("%ld %d is eating\n",
+	philo->times_eaten++;
+	pthread_mutex_unlock(&(philo->edit_philo));
+	printf("%-6ld %d is eating\n",
 		(get_time() - philo->rules->start_timestamp) , philo->id + 1);
-	philo->times_eaten++; // blockear com mutex
-	usleep(1000 * philo->rules->ms_to_eat);
+	ft_wait_task(philo->rules->ms_to_eat, philo->rules);
 	pthread_mutex_unlock(&(philo->rules->forks[philo->forks[0]]));
 	pthread_mutex_unlock(&(philo->rules->forks[philo->forks[1]]));
 }
 
-void	ft_sleep(t_philo *philo)
+static void	ft_sleep(t_philo *philo)
 {
-	if (!philo->rules->active)
+	if (!check_is_active(philo->rules))
 		return ;
-	printf("%ld %d is sleeping\n",
+	printf("%-6ld %d is sleeping\n",
 		get_time() - philo->rules->start_timestamp , philo->id + 1);
-	usleep(1000 * philo->rules->ms_to_sleep);
+	ft_wait_task(philo->rules->ms_to_sleep, philo->rules);
 }
 
-void	ft_think(t_philo *philo)
+static int	ft_grab_forks(t_philo *philo)
 {
-	if (!philo->rules->active)
-		return ;
-	printf("%ld %d is thinking\n",
+	if (philo->forks[1] == -1)
+	{
+		printf("%-6ld %d has taken a fork\n",
+			get_time() - philo->rules->start_timestamp , philo->id + 1);
+		return (-1);
+	}
+	if (!check_is_active(philo->rules))
+		return (-1);
+	pthread_mutex_lock(&(philo->rules->forks[philo->forks[0]]));
+	if (!check_is_active(philo->rules))
+	{
+		pthread_mutex_unlock(&(philo->rules->forks[philo->forks[0]]));
+		return (-1);
+	}
+	printf("%-6ld %d has taken a fork\n",
 		get_time() - philo->rules->start_timestamp , philo->id + 1);
+	pthread_mutex_lock(&(philo->rules->forks[philo->forks[1]]));
+	if (!check_is_active(philo->rules))
+	{
+		pthread_mutex_unlock(&(philo->rules->forks[philo->forks[0]]));
+		pthread_mutex_unlock(&(philo->rules->forks[philo->forks[1]]));
+		return (-1);
+	}
+	printf("%-6ld %d has taken a fork\n",
+		get_time() - philo->rules->start_timestamp , philo->id + 1);
+	return (1);
+}
+
+static void	ft_wait_task(int ms, t_rules *rules)
+{
+	long	start;
+
+	start = get_time();
+	while (check_is_active(rules) && get_time() - start < ms)
+		usleep(500);
 }

@@ -32,12 +32,13 @@ typedef struct s_rules {
 }	t_rules;
 
 typedef struct s_philo {
-	int			id;
-	pthread_t	thread;
-	t_rules		*rules;
-	int			forks[2];
-	int			times_eaten;
-	long		last_meal_mark;
+	int				id;
+	pthread_t		thread;
+	pthread_mutex_t	edit_philo;
+	t_rules			*rules;
+	int				forks[2];
+	int				times_eaten;
+	long			last_meal_mark;
 }	t_philo;
 
 /* Helpers */
@@ -50,8 +51,9 @@ t_philo	*init_philos(t_rules *rules);
 void	free_data(t_rules *rules);
 
 /* Check */
-int 	check_philo_starved(t_philo *philos);
-int 	check_all_philos_eaten(t_philo *philos);
+int		check_philo_starved(t_philo *philos);
+int		check_all_philos_eaten(t_philo *philos);
+int		check_is_active(t_rules *rules);
 
 /* Routine */
 void	*routine(void *philo);
