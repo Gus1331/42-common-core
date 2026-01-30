@@ -1,6 +1,6 @@
-[submodule "so_long/so_MLX42"]
-	path = so_long/so_MLX42
-	url = https://github.com/codam-coding-college/MLX42
 [submodule "so_long/MLX42"]
 	path = so_long/MLX42
 	url = https://github.com/codam-coding-college/MLX42
+[submodule "Minishell"]
+	path = Minishell
+	url = https://github.com/42-Partners/Minishell.git
