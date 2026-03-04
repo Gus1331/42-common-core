@@ -2,12 +2,10 @@ CXX = c++
 INCLUDE = -I includes
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDE)
 
-NAME = humansafterall
+NAME = harl
 
-SRC = src/main.cpp  \
-    src/HumanA.cpp \
-    src/HumanB.cpp \
-    src/Weapon.cpp \
+SRC = src/main.cpp \
+    src/Harl.cpp
 
 OBJDIR = obj
 OBJ = $(SRC:%.cpp=$(OBJDIR)/%.o)

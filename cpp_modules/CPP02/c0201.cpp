@@ -32,11 +32,6 @@ class Fixed {
             return *this;
         }
 
-        ostream &operator<<(ostream &os, const Fixed& obj) {
-            os << obj.get;
-            return os;
-        }
-
         float toFloat(void) const {
             return (float)this->getRawBits();
         }
@@ -55,6 +50,11 @@ class Fixed {
             cout << "Destructor..." << endl;
         }
 };
+
+ostream &operator<<(ostream &os, const Fixed& obj) {
+    os << obj.getRawBits();
+    return os;
+}
 
 int main( void ) {
     Fixed a;
