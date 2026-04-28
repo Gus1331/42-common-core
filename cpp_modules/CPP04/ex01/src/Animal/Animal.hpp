@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include "Brain/Brain.hpp"
 
 using std::cout;
 using std::endl;
@@ -27,6 +28,7 @@ class Animal {
         /* Getters and setters */
         string getType() const;
         void setType(string type);
+        virtual Brain &getBrain() const;
 };
 
 #endif

@@ -23,4 +23,28 @@ int main()
     delete bob;
     delete me;
     delete src;
+
+    cout << endl << endl;
+
+    IMateriaSource* materiaSrc = new MateriaSource();
+    materiaSrc->learnMateria(new Ice());
+    materiaSrc->learnMateria(new Cure());
+    ICharacter* character = new Character("a cool character");
+    AMateria* materia;
+    materia = materiaSrc->createMateria("ice");
+    character->equip(materia);
+    materia = materiaSrc->createMateria("cure");
+    character->equip(materia);
+    materia = materiaSrc->createMateria("ice");
+    character->equip(materia);
+    materia = materiaSrc->createMateria("ice");
+    character->equip(materia);
+    ICharacter* dummy = new Character("dummy");
+    character->use(0, *dummy);
+    character->use(1, *dummy);
+    character->use(2, *dummy);
+    character->use(3, *dummy);
+    delete dummy;
+    delete character;
+    delete materiaSrc;
 }

@@ -4,15 +4,20 @@
 /* Constructors */
 
 WrongAnimal::WrongAnimal() : type("Not Live Being") {
+        cout << "<WrongAnimal constructor>" << endl;
 }
 
-WrongAnimal::WrongAnimal(string type) : type(type) {}
+WrongAnimal::WrongAnimal(string type) : type(type) {
+        cout << "<WrongAnimal constructor>" << endl;
+}
 
 WrongAnimal::WrongAnimal(const WrongAnimal &other) {
     *this = other;
 }
 
-WrongAnimal::~WrongAnimal() {}
+WrongAnimal::~WrongAnimal() {
+    cout << "<WrongAnimal destructor>" << endl;
+}
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other) {
     if (this != &other) {

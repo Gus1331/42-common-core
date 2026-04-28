@@ -5,7 +5,11 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDE)
 NAME = animals
 
 SRC = src/main.cpp \
-    src/Animal/Animal.cpp
+    src/Animal/Animal.cpp \
+    src/Cat/Cat.cpp \
+    src/Dog/Dog.cpp \
+    src/WrongAnimal/WrongAnimal.cpp \
+    src/WrongCat/WrongCat.cpp
 
 OBJDIR = obj
 OBJ = $(SRC:%.cpp=$(OBJDIR)/%.o)

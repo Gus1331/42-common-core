@@ -2,20 +2,25 @@
 
 /* Constructors */
 
-Brain::Brain() : ideasCount(0) {}
+Brain::Brain() : ideasCount(0) {
+    cout << "<Brain constructor>" << endl;
+}
 
 Brain::Brain(const Brain &other) {
+    cout << "<Brain constructor>" << endl;
     *this = other;
 };
 
-Brain::~Brain() {};
+Brain::~Brain() {
+    cout << "<Brain destructor>" << endl;
+};
 
 Brain &Brain::operator=(const Brain &other) {
     if (this != &other) {
-        for (int i = 0; i < 100; i++) {
+        this->ideasCount = other.ideasCount;
+        for (int i = 0; i < other.ideasCount; i++) {
             this->ideas[i] = other.ideas[i];
         }
-        this->ideasCount = other.ideasCount;
     }
     return *this;
 };

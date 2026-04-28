@@ -22,7 +22,7 @@ class WrongAnimal {
         WrongAnimal &operator=(const WrongAnimal &other);
 
         /* Methods */
-        virtual void makeSound(void) const;
+        void makeSound(void) const;
 
         /* Getters and setters */
         string getType() const;

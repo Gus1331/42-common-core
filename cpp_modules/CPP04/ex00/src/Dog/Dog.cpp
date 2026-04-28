@@ -3,9 +3,12 @@
 /* Constructors */
 
 Dog::Dog() {
+    cout << "<Dog constructor>" << endl;
+    Animal::setType("Canine");
 }
 
 Dog::Dog(string type) {
+    cout << "<Dog constructor>" << endl;
     Animal::setType(type);
 }
 
@@ -13,7 +16,9 @@ Dog::Dog(const Dog &other) : Animal(other) {
     *this = other;
 }
 
-Dog::~Dog() {}
+Dog::~Dog() {
+    cout << "<Dog constructor>" << endl;
+}
 
 Dog &Dog::operator=(const Dog &other) {
     if (this != &other) {

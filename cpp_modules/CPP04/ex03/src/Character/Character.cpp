@@ -44,10 +44,13 @@ void Character::use(int idx, ICharacter& target) {
 }
 
 void Character::equip(AMateria* m) {
+    if (!m)
+        return;
     int i = 0;
+    cout << this->getName() << " is equiping " << m->getType() << endl;
     while (this->inventory[i]) i++;
     if (i >= 4) {
-        unequip(1);
+        unequip(0);
         i = 3;
     }
     this->inventory[i] = m;
@@ -63,7 +66,6 @@ void Character::unequip(int idx) {
 }
 
 /* Getters and Setters */
-
 string const &Character::getName(void) const {
     return this->name;
 }

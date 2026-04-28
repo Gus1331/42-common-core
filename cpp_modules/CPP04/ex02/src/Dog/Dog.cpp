@@ -20,6 +20,9 @@ Dog::~Dog() {
 Dog &Dog::operator=(const Dog &other) {
     if (this != &other) {
         AAnimal::operator=(other);
+        delete this->brain;
+        this->brain = new Brain();
+        *this->brain = other.getBrain();
     }
     return *this;
 }
@@ -31,6 +34,6 @@ void Dog::makeSound(void) const {
 }
 
 /* Getters and setters */
-Brain &Dog::getBrain(void) {
+Brain &Dog::getBrain(void) const{
     return *this->brain;
 }

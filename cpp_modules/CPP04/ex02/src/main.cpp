@@ -15,10 +15,11 @@ int main() {
             ((Cat *)animals[i])->getBrain().newIdea("catnip");
         else
             ((Dog *)animals[i])->getBrain().newIdea("ride");
-
         cout << "animal " << i + 1 << ": 💭 " << *((Cat *)animals[i])->getBrain().getIdeas() << " 💬 ";
         animals[i]->makeSound();
     }
+    
+    *animals[0] = *animals[9];
 
     for (int i = 0; i < 10; i++) {
         delete animals[i];

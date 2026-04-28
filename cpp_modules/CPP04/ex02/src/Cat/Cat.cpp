@@ -20,17 +20,19 @@ Cat::~Cat() {
 Cat &Cat::operator=(const Cat &other) {
     if (this != &other) {
         AAnimal::operator=(other);
+        delete this->brain;
+        this->brain = new Brain();
+        *this->brain = other.getBrain();
     }
     return *this;
 }
 
 /* Methods */
-
 void Cat::makeSound(void) const {
     cout << "Meown :3 🐈🐱🧶" << endl;
 }
 
 /* Getters and setters */
-Brain &Cat::getBrain(void) {
+Brain &Cat::getBrain(void) const{
     return *this->brain;
 }

@@ -20,6 +20,10 @@ Cat::~Cat() {
 Cat &Cat::operator=(const Cat &other) {
     if (this != &other) {
         Animal::operator=(other);
+        *this->brain = other.Cat::getBrain();
+        if (this->brain && other.brain) {
+            *this->brain = *other.brain;
+        }
     }
     return *this;
 }
@@ -31,6 +35,6 @@ void Cat::makeSound(void) const {
 }
 
 /* Getters and setters */
-Brain &Cat::getBrain(void) {
+Brain &Cat::getBrain(void) const{
     return *this->brain;
 }

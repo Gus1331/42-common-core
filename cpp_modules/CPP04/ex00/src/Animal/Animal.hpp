@@ -17,16 +17,16 @@ class Animal {
         Animal();
         Animal(string type);
         Animal(const Animal &other);
-        ~Animal();
+        virtual ~Animal();
 
         Animal &operator=(const Animal &other);
 
         /* Methods */
 
-        virtual void makeSound(void);
+        virtual void makeSound(void) const;
 
         /* Getters and setters */
-        string getType();
+        string getType(void) const;
         void setType(string type);
 };
 

@@ -21,7 +21,7 @@ class Cat : public Animal
         void makeSound(void) const;
 
         /* Getters and setters */
-        Brain &getBrain(void);
+        Brain &getBrain(void) const;
 };
 
 #endif

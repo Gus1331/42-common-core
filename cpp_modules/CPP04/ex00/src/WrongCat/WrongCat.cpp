@@ -3,9 +3,11 @@
 /* Constructors */
 
 WrongCat::WrongCat() {
+    cout << "<WrongCat constructor>" << endl;
 }
 
 WrongCat::WrongCat(string type) {
+    cout << "<WrongCat constructor>" << endl;
     WrongAnimal::setType(type);
 }
 
@@ -13,7 +15,9 @@ WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) {
     *this = other;
 }
 
-WrongCat::~WrongCat() {}
+WrongCat::~WrongCat() {
+    cout << "<WrongCat destructor>" << endl;
+}
 
 WrongCat &WrongCat::operator=(const WrongCat &other) {
     if (this != &other) {

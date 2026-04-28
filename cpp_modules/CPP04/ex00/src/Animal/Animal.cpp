@@ -4,15 +4,21 @@
 /* Constructors */
 
 Animal::Animal() {
+    cout << "<Animal constructor>" << endl;
+    this->type = "unkown";
 }
 
-Animal::Animal(string type) : type(type) {}
+Animal::Animal(string type) : type(type) {
+    cout << "<Animal constructor>" << endl;
+}
 
 Animal::Animal(const Animal &other) {
     *this = other;
 }
 
-Animal::~Animal() {}
+Animal::~Animal() {
+    cout << "<Animal destructor>" << endl;
+}
 
 Animal &Animal::operator=(const Animal &other) {
     if (this != &other) {
@@ -23,13 +29,13 @@ Animal &Animal::operator=(const Animal &other) {
 
 /* Methods */
 
-void Animal::makeSound(void) {
+void Animal::makeSound(void) const{
     cout << "What does the fox say?" << endl;
 }
 
 /* Getters and setters */
 
-string Animal::getType(void) {
+string Animal::getType(void) const{
     return this->type;
 }
 

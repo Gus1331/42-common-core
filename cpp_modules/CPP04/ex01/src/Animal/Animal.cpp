@@ -1,5 +1,5 @@
 #include "Animal/Animal.hpp"
-
+#include "Brain/Brain.hpp"
 
 /* Constructors */
 
@@ -17,6 +17,7 @@ Animal::~Animal() {}
 Animal &Animal::operator=(const Animal &other) {
     if (this != &other) {
         this->setType(other.type);
+        this->getBrain() = other.getBrain();
     }
     return *this;
 }
@@ -36,3 +37,7 @@ string Animal::getType(void) const{
 void Animal::setType(string type) {
     this->type = type;
 }
+
+Brain &Animal::getBrain() const{
+    return *new Brain();
+};

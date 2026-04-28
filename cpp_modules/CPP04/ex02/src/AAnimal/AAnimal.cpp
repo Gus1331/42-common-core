@@ -36,3 +36,7 @@ string AAnimal::getType(void) const{
 void AAnimal::setType(string type) {
     this->type = type;
 }
+
+Brain &AAnimal::getBrain() const{
+    return *new Brain();
+};
