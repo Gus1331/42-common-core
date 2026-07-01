@@ -54,6 +54,10 @@ int AForm::getGradeToExecute() const {
     return this->gradeToExecute;
 }
 
+void AForm::setIsSigned(bool value) {
+    this->isSigned = value;
+}
+
 /* Exceptions */
 
 const char* AForm::GradeTooHighException::what() const throw() {

@@ -37,6 +37,7 @@ class AForm {
         bool getIsSigned() const;
         int getGradeToSign() const;
         int getGradeToExecute() const;
+        void setIsSigned(bool value);
 
         /* Exceptions */
         class GradeTooHighException : public std::exception {

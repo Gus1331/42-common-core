@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <string.h>
-#include "Form/Form.hpp"
+#include "AForm/AForm.hpp"
 #include <exception>
 
 using std::string;
@@ -12,7 +12,7 @@ using std::cout;
 using std::endl;
 using std::ostream;
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -29,7 +29,8 @@ class Bureaucrat {
         /* Methods */
         void increment();
         void decrement();
-        void signForm(Form &form);
+        void signForm(AForm &form);
+        void executeForm(AForm const& form) const;
 
         /* Getters */
         string getName() const;
