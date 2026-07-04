@@ -39,23 +39,25 @@ void Bureaucrat::decrement() {
 }
 
 void Bureaucrat::signForm(AForm &form) {
-    try {
-        form.beSigned(*this);
-        cout << this->getName() << " signed " << form.getName() << endl;
-    } catch (std::exception &e) {
-        cout << this->getName() << " couldn't sign " << form.getName()
-            << " because " << e.what() << "." << endl;
-    }
+    // try {
+    //     form.beSigned(*this);
+    //     cout << this->getName() << " signed " << form.getName() << endl;
+    // } catch (std::exception &e) {
+    //     cout << this->getName() << " couldn't sign " << form.getName()
+    //         << " because " << e.what() << "." << endl;
+    // }
+    form.beSigned(*this);
 }
 
 void Bureaucrat::executeForm(AForm const& form) const{
-    try {
-        form.execute(*this);
-        std::cout << this->_name << " executed " << form.getName() << std::endl;
-    } catch (std::exception & e) {
-        std::cout << this->_name << " couldn't execute " << form.getName() 
-                  << " because " << e.what() << std::endl;
-    }
+    // try {
+    //     form.beSigned(*this);
+    //     std::cout << this->name << " executed " << form.getName() << std::endl;
+    // } catch (std::exception & e) {
+    //     std::cout << this->name << " couldn't execute " << form.getName() 
+    //               << " because " << e.what() << std::endl;
+    // }
+    form.execute(*this);
 }
 
 

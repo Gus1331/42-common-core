@@ -11,6 +11,7 @@ class AForm;
 
 class ShrubberyCreationForm : public AForm {
     private:
+        string target;
     public:
         ShrubberyCreationForm();
         ShrubberyCreationForm(ShrubberyCreationForm &other);
@@ -20,7 +21,9 @@ class ShrubberyCreationForm : public AForm {
         ~ShrubberyCreationForm();
 
         /* Methods */
-        void beSigned(const Bureaucrat& b);
+        void execute(Bureaucrat const &executor)const;
+
+        string getTarget();
 };
 
 

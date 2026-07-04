@@ -6,7 +6,10 @@ NAME = bureaucrat
 
 SRC = src/main.cpp \
     src/Bureaucrat/Bureaucrat.cpp \
-    src/AForm/AForm.cpp
+    src/AForm/AForm.cpp \
+    src/ShrubberyCreationForm/ShrubberyCreationForm.cpp \
+    src/RobotomyRequestForm/RobotomyRequestForm.cpp \
+    src/PresidentialPardonForm/PresidentialPardonForm.cpp
     
 
 OBJDIR = obj

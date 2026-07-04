@@ -24,8 +24,8 @@ AForm& AForm::operator=(const AForm &other) {
     return *this;
 }
 
-// AForm::~AForm(){
-// }
+AForm::~AForm(){
+}
 
 /* Methods */
 
@@ -35,6 +35,7 @@ void AForm::beSigned(const Bureaucrat& b) {
     }
     this->isSigned = true;
 }
+
 
 /* Getters */
 
@@ -66,6 +67,10 @@ const char* AForm::GradeTooHighException::what() const throw() {
 
 const char* AForm::GradeTooLowException::what() const throw() {
     return "Form grade is too low!!!\n";
+}
+
+const char* AForm::NotSignedException::what() const throw() {
+    return "Form is not signed!!!\n";
 }
 
 /* Output redirect */
