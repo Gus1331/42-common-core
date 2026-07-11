@@ -47,7 +47,7 @@ class $1 {
 " > "$PWD/$1/$1.hpp"
 
 echo "
-#include "$1/$1.hpp"
+#include \"$1/$1.hpp\"
 
 $1::$1() {
 }
