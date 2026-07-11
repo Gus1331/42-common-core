@@ -29,34 +29,21 @@ Bureaucrat::~Bureaucrat() {
 /* Methods */
 
 void Bureaucrat::increment() {
-    if (this->grade == 150) throw GradeTooLowException();
+    if (this->grade == 1) throw GradeTooHighException();
     this->grade--;
 }
 
 void Bureaucrat::decrement() {
-    if (this->grade == 1) throw GradeTooHighException();
+    if (this->grade == 150) throw GradeTooLowException();
     this->grade++;
 }
 
 void Bureaucrat::signForm(AForm &form) {
-    // try {
-    //     form.beSigned(*this);
-    //     cout << this->getName() << " signed " << form.getName() << endl;
-    // } catch (std::exception &e) {
-    //     cout << this->getName() << " couldn't sign " << form.getName()
-    //         << " because " << e.what() << "." << endl;
-    // }
     form.beSigned(*this);
 }
 
 void Bureaucrat::executeForm(AForm const& form) const{
-    // try {
-    //     form.beSigned(*this);
-    //     std::cout << this->name << " executed " << form.getName() << std::endl;
-    // } catch (std::exception & e) {
-    //     std::cout << this->name << " couldn't execute " << form.getName() 
-    //               << " because " << e.what() << std::endl;
-    // }
+
     form.execute(*this);
 }
 

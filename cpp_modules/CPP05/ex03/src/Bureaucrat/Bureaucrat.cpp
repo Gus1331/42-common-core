@@ -29,12 +29,12 @@ Bureaucrat::~Bureaucrat() {
 /* Methods */
 
 void Bureaucrat::increment() {
-    if (this->grade == 150) throw GradeTooLowException();
+    if (this->grade == 1) throw GradeTooHighException();
     this->grade--;
 }
 
 void Bureaucrat::decrement() {
-    if (this->grade == 1) throw GradeTooHighException();
+    if (this->grade == 150) throw GradeTooLowException();
     this->grade++;
 }
 

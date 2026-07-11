@@ -28,9 +28,10 @@ class Bureaucrat {
         void increment();
         void decrement();
 
-        /* Getters */
+        /* Getters & Setters */
         string getName() const;
         int getGrade() const;
+        void setGrade(int grade);
 
         /* Exceptions */
         class GradeTooHighException : public std::exception {

@@ -9,8 +9,6 @@ Intern::Intern(Intern &other){
 }
 
 Intern &Intern::operator=(Intern &other) {
-    // if (this != &other) {
-    // }
     (void)other;
     return *this;
 }
@@ -42,9 +40,9 @@ AForm * Intern::makeForm(string formName, string target) {
 
     string FormsName[3];
 
-    FormsName[0] = "PresidentialPardonForm";
-    FormsName[1] = "RobotomyRequestForm";
-    FormsName[2] = "ShrubberyCreationForm";
+    FormsName[0] = "presidential pardon";
+    FormsName[1] = "robotomy request";
+    FormsName[2] = "shrubbery creation";
 
     for(int i = 0; i < 3; i++) {
         if (formName == FormsName[i])

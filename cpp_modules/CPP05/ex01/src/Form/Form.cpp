@@ -32,12 +32,12 @@ Form::~Form(){
 
 void Form::beSigned(const Bureaucrat& b) {
     if (b.getGrade() > this->gradeToSign) {
-        throw Form::GradeTooLowException();
+        throw Bureaucrat::GradeTooLowException();
     }
     this->isSigned = true;
 }
 
-/* Getters */
+/* Getters & Setters*/
 
 string Form::getName() const {
     return this->name;
@@ -53,6 +53,10 @@ int Form::getGradeToSign() const {
 
 int Form::getGradeToExecute() const {
     return this->gradeToExecute;
+}
+
+void Form::setIsSigned(bool isSigned) {
+    this->isSigned = isSigned;
 }
 
 /* Exceptions */

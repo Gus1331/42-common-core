@@ -32,11 +32,12 @@ class Form {
         /* Methods */
         void beSigned(const Bureaucrat& b);
 
-        /* Getters */
+        /* Getters  & Setters*/
         string getName() const;
         bool getIsSigned() const;
         int getGradeToSign() const;
         int getGradeToExecute() const;
+        void setIsSigned(bool isSigned);
 
         /* Exceptions */
         class GradeTooHighException : public std::exception {

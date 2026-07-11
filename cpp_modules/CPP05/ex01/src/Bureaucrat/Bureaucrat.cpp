@@ -29,12 +29,12 @@ Bureaucrat::~Bureaucrat() {
 /* Methods */
 
 void Bureaucrat::increment() {
-    if (this->grade == 150) throw GradeTooLowException();
+    if (this->grade == 1) throw GradeTooHighException();
     this->grade--;
 }
 
 void Bureaucrat::decrement() {
-    if (this->grade == 1) throw GradeTooHighException();
+    if (this->grade == 150) throw GradeTooLowException();
     this->grade++;
 }
 
@@ -61,11 +61,11 @@ int Bureaucrat::getGrade() const {
 /* Exceptions */
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Grade is too high!!!\n";
+    return "Bureaucrat grade is too high!!!\n";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Grade is too low!!!\n";
+    return "Bureaucrat grade is too low!!!\n";
 }
 
 /* Output redirect */
