@@ -2,11 +2,11 @@ CXX = c++
 INCLUDE = -I./src
 FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDE)
 
-NAME = scalarconverter
+NAME = serialization
 
 SRC = src/main.cpp \
-    src/ScalarConverter/ScalarConverter.cpp \
-    src/Types.cpp
+    src/Serializer/Serializer.cpp \
+    src/Data/Data.cpp
     
 
 OBJDIR = obj
