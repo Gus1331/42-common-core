@@ -26,7 +26,7 @@ int	main() {
 
 	for (int i = 0; i < 5; i++) cout << a[i] << " ";
 	cout << endl;
-	
+		
 	for (int i = 0; i < 3; i++) cout << b[i] << " ";
 	cout << endl;
 
@@ -37,14 +37,14 @@ int	main() {
 
 	for (int i = 0; i < 5; i++) cout << a[i] << " ";
 	cout << endl;
-	
+		
 	for (int i = 0; i < 3; i++) cout << b[i] << " ";
 	cout << endl;
 
 	const char c[3] = {'A', 'B', 'C'};
 	iter(c, 3, putChar);
 	cout << endl;
-	
+		
 	return (0);
 }
 
