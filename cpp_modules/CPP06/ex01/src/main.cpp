@@ -28,9 +28,10 @@ int main() {
     cout << "{user: " << p2->getUser() <<"; pass: " << p2->getPass() <<";\tbanned: '"<< p2->getBanned() << "'}" << endl;
     cout << "{user: " << p3->getUser() <<"; pass: " << p3->getPass() <<";\tbanned: '"<< p3->getBanned() << "'}" << endl;
     cout << "{user: " << p4->getUser() <<"; pass: " << p4->getPass() <<";\tbanned: '"<< p4->getBanned() << "'}" << endl;
-
+    
     delete(u1);
     delete(u2);
     delete(u3);
+    delete(u4);
     return 0;
 }

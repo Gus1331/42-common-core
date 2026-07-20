@@ -41,14 +41,14 @@ T &Array<T>::operator[](unsigned int i) {
 
 template <typename T>
 T const &Array<T>::operator[](unsigned int i) const {
-     (i >= arrSize)
+    if (i >= arrSize)
         throw OutOfBoundsException();
-     array[i];
+    return array[i];
 }
 
 template <typename T>
 unsigned int Array<T>::size() const {
-    this->arrSize;
+    return this->arrSize;
 }
 
 #endif
