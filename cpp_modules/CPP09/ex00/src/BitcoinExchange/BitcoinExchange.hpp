@@ -22,6 +22,9 @@ class BitcoinExchange {
         BitcoinExchange&operator=(BitcoinExchange &other);
         bool operator<(const BitcoinExchange& other) const;
 
+        string getDate() const;
+        float getValue()const;
+
         ~BitcoinExchange();
 
         class InvalidDate : public std::exception {

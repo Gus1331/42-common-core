@@ -21,6 +21,8 @@ BitcoinExchange::BitcoinExchange(string date, float val) {
 
     if (date.at(8) > '3' || (date.at(8) == '3' && date.at(9) > '1')) throw InvalidDate();
     if (date.at(8) == '0' && date.at(9) == '0') throw InvalidDate();
+    this->date = date;
+    this->value = val;
 
 }
 
@@ -39,3 +41,13 @@ bool BitcoinExchange::operator<(const BitcoinExchange& other) const {
 }
 
 BitcoinExchange::~BitcoinExchange() {}
+
+
+string BitcoinExchange::getDate() const{
+    return this->date;
+}
+
+
+float BitcoinExchange::getValue() const{
+    return this->value;
+}
